@@ -276,7 +276,7 @@ dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
 /* ===== SUPABASE CONFIG: paste your two values below (publishable key only, NEVER the secret/service-role key) ===== */
-const SUPABASE_URL = "https://enszymndsxyupkafgzdk.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://enszymndsxyupkafgzdk.supabase.co;
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_TXSBo2kbJlWXRD-At7xLPw_xt8bnkcC";
 const sb=(window.supabase&&!SUPABASE_URL.startsWith("PASTE"))?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
 /* ===== COLUMN MAP: matches your Supabase schema. Fields starting with _ are derived in the browser. ===== */
