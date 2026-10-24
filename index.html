@@ -20,7 +20,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .logo{font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
 .logo i{width:22px;height:22px;border:2px solid var(--ac);transform:rotate(45deg);display:block}
-nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px;font-size:14px;color:var(--mu)}
+nav ul{display:none;list-style:none;margin:0;padding:0;gap:20px;font-size:14px;color:var(--mu)}
 nav ul a:hover{color:var(--tx)}
 .btn{display:inline-block;padding:11px 20px;border-radius:4px;font-weight:600;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--tx);cursor:pointer;transition:transform .15s,border-color .15s}
 .btn:active{transform:scale(.97)}
@@ -149,36 +149,144 @@ dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border
 #ts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:92vw;width:520px;background:var(--elev);border:1px solid var(--ac);border-radius:6px;padding:14px 16px;font-size:14px;z-index:40}#ts[hidden]{display:none}
 .fm.pn{margin:0}.bar.d i{background:var(--bad)}
 .gr2{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+/* ===== lively additions ===== */
+.orbs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.orbs i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.16;animation:orb 18s ease-in-out infinite alternate}
+.orbs i:nth-child(1){width:420px;height:420px;background:var(--ac);top:-120px;right:-80px}
+.orbs i:nth-child(2){width:360px;height:360px;background:#3B82F6;bottom:-140px;left:-100px;animation-duration:24s;opacity:.1}
+.orbs i:nth-child(3){width:260px;height:260px;background:#8B5CF6;top:40%;left:45%;animation-duration:30s;opacity:.07}
+@keyframes orb{to{transform:translate3d(-60px,50px,0) scale(1.15)}}
+.spb{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--ac),#7CF0D0);box-shadow:0 0 10px var(--ac)}
+.js .rv{opacity:0}
+.js .rv.in{opacity:1;animation:rin .7s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--d,0s)}
+@keyframes rin{from{opacity:0;transform:translateY(24px)}}
+.btn.p{position:relative;overflow:hidden}
+.btn.p:after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:sh 4.5s infinite;pointer-events:none}
+@keyframes sh{0%,55%{left:-70%}100%{left:140%}}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge.r{color:#FFD76A;border-color:rgba(255,215,106,.4);background:rgba(255,215,106,.07)}
+.rot{display:inline-block;color:var(--ac);min-width:7.5em}
+.rot.sw{animation:rs .5s}
+@keyframes rs{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.dash{overflow:visible;animation:fl 9s ease-in-out infinite}
+.fc{position:absolute;z-index:2;background:var(--elev);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:12px;box-shadow:0 12px 30px rgba(0,0,0,.45);display:flex;gap:8px;align-items:center;animation:fl 6s ease-in-out infinite}
+.fc.a{top:-16px;right:10px}.fc.b{bottom:-14px;left:12px;animation-delay:-3s}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.live{width:8px;height:8px;border-radius:50%;background:var(--ac);display:inline-block;box-shadow:0 0 0 0 rgba(45,212,160,.6);animation:lv 1.8s infinite;flex:none}
+@keyframes lv{70%{box-shadow:0 0 0 8px rgba(45,212,160,0)}100%{box-shadow:0 0 0 0 rgba(45,212,160,0)}}
+.ln{stroke-dasharray:1;stroke-dashoffset:1;animation:dw 2.2s .4s forwards ease-out}
+@keyframes dw{to{stroke-dashoffset:0}}
+.card.cf2{animation:cfl .35s}
+@keyframes cfl{from{opacity:.4;transform:translateY(6px)}}
+.mq{border-block:1px solid var(--line);background:var(--rich);overflow:hidden;white-space:nowrap}
+.mt{display:inline-flex;animation:mq 40s linear infinite;will-change:transform}
+.mq:hover .mt{animation-play-state:paused}
+.mg{display:inline-flex}
+.mg span{padding:14px 28px;color:var(--mu);font-size:13px;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:28px}
+.mg span:after{content:"";width:6px;height:6px;background:var(--ac);transform:rotate(45deg);display:block}
+@keyframes mq{to{transform:translateX(-50%)}}
+.stats{padding:56px 0;background:linear-gradient(180deg,var(--bg),var(--rich))}
+.stg{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:860px){.stg{grid-template-columns:repeat(4,1fr)}}
+.sc{background:var(--ash);border:1px solid var(--line);border-radius:8px;padding:24px 20px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.sc:hover{transform:translateY(-4px);border-color:var(--ac)}
+.sc b{display:block;font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.sc span{color:var(--mu);font-size:13px}
+.sc:before{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,transparent,var(--ac),transparent);opacity:.6}
+.mg4{display:grid;gap:14px}
+@media(min-width:700px){.mg4{grid-template-columns:repeat(2,1fr)}}@media(min-width:1100px){.mg4{grid-template-columns:repeat(4,1fr)}}
+.mdl{background:var(--ash);border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:10px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.mdl:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 24px 50px -24px rgba(45,212,160,.35)}
+.mdl h3{margin:0;font-size:20px}.mdl p{margin:0;color:var(--mu);font-size:14px;flex:1}
+.mdl .ph{font-size:12px;color:var(--ac);letter-spacing:.1em}
+.mdl.ins{background:linear-gradient(160deg,rgba(45,212,160,.1),var(--ash) 60%);border-color:rgba(45,212,160,.35)}
+.mdl .btn{align-self:flex-start}
+.rvf{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.rvf button{background:var(--rich);border:1px solid var(--line);color:var(--mu);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:13px;display:inline-flex;gap:8px;align-items:center;min-height:40px}
+.rvf button[aria-pressed=true]{color:var(--tx);border-color:var(--ac);background:var(--elev)}
+.rg{display:grid;gap:14px}
+@media(min-width:700px){.rg{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.rg{grid-template-columns:repeat(3,1fr)}}
+.rev{background:var(--ash);border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,border-color .25s}
+.rev:hover{transform:translateY(-4px);border-color:#3a4046}
+.stars{color:#FFD76A;letter-spacing:2px;font-size:14px}
+.rev p{margin:0;font-size:15px;flex:1}
+.rw{display:flex;gap:12px;align-items:center}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--elev);border:1px solid var(--ac);color:var(--ac);font-weight:700;font-size:14px;flex:none}
+.rw small{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px;flex-wrap:wrap}
+.flg{display:inline-block;width:20px;height:14px;border-radius:2px;overflow:hidden;vertical-align:middle;flex:none}
+.flg svg{display:block;width:100%;height:100%}
+.cg4{display:grid;gap:14px}
+@media(min-width:700px){.cg4{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.cg4{grid-template-columns:repeat(4,1fr)}}
+.cc{background:var(--ash);border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:8px;transition:transform .25s,border-color .25s}
+.cc:hover{transform:translateY(-4px);border-color:var(--ac)}
+.cc h3{margin:0;font-size:16px}.cc p{margin:0;color:var(--mu);font-size:14px;flex:1}.cc .btn{align-self:flex-start;margin-top:6px}
+.ic{width:38px;height:38px;border-radius:8px;background:var(--elev);border:1px solid var(--line);display:grid;place-items:center;color:var(--ac)}
+.ic svg{width:20px;height:20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.chips button,.chq button{background:var(--rich);border:1px solid var(--line);color:var(--tx);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:13px;min-height:40px;transition:border-color .15s}
+.chips button:hover,.chq button:hover{border-color:var(--ac)}
+.chl{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:35;display:flex;align-items:center;gap:10px;background:var(--ac);color:#04130E;border:0;border-radius:999px;padding:14px 20px 14px 16px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 14px 40px rgba(45,212,160,.35);transition:transform .15s}
+.chl:hover{transform:translateY(-2px)}.chl svg{width:22px;height:22px}
+.chl:before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--ac);animation:pr 2.4s infinite;pointer-events:none}
+@keyframes pr{from{transform:scale(1);opacity:.7}to{transform:scale(1.35);opacity:0}}
+.chn{position:fixed;right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:35;max-width:250px;background:var(--elev);border:1px solid var(--line);border-radius:10px 10px 2px 10px;padding:12px 34px 12px 14px;font-size:13px;box-shadow:0 14px 40px rgba(0,0,0,.5);animation:pop .4s;cursor:pointer}
+.chn[hidden]{display:none}
+.chn button{position:absolute;top:2px;right:2px;background:none;border:0;color:var(--mu);cursor:pointer;width:32px;height:32px;font-size:18px}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}}
+.chp{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:36;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 120px));display:flex;flex-direction:column;background:var(--ash);border:1px solid var(--line);border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;animation:pop .25s}
+.chp[hidden]{display:none}
+.chh{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(180deg,var(--elev),var(--ash));border-bottom:1px solid var(--line)}
+.chh b{display:block;font-size:15px}.chh small{color:var(--mu);font-size:12px;display:flex;gap:6px;align-items:center}
+.chh .x{margin-left:auto;background:none;border:1px solid var(--line);color:var(--tx);border-radius:4px;min-width:36px;height:36px;cursor:pointer;font-size:18px}
+.chm{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;overscroll-behavior:contain}
+.cm{max-width:86%;padding:10px 13px;border-radius:12px;font-size:14px;line-height:1.5;animation:pop .25s}
+.cm.b{background:var(--elev);border:1px solid var(--line);border-bottom-left-radius:3px;align-self:flex-start}
+.cm.u{background:var(--ac);color:#04130E;border-bottom-right-radius:3px;align-self:flex-end}
+.cm a{color:var(--ac);text-decoration:underline;display:inline-block;margin-top:6px}
+.cm.t{display:flex;gap:4px;padding:14px;background:var(--elev);border:1px solid var(--line);align-self:flex-start}
+.cm.t i{width:6px;height:6px;border-radius:50%;background:var(--mu);animation:td 1s infinite}.cm.t i:nth-child(2){animation-delay:.15s}.cm.t i:nth-child(3){animation-delay:.3s}
+@keyframes td{50%{transform:translateY(-4px);opacity:.4}}
+.chq{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 10px}
+.chf{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--rich)}
+.chf input{flex:1;min-width:0;background:var(--ash);border:1px solid var(--line);color:var(--tx);border-radius:4px;padding:11px 12px;font:inherit;font-size:16px;min-height:44px}
+.chf .btn{min-height:44px}
+@media(max-width:560px){.chp{right:8px;left:8px;width:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
+@media(max-width:640px){body:has(#ckb:not([hidden])) .chl{bottom:calc(250px + env(safe-area-inset-bottom,0px))}body:has(#ckb:not([hidden])) .chn{display:none}}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1!important}.mt{animation:none!important}.mq{overflow-x:auto}.dash,.fc,.orbs i,.btn.p:after,.chl:before,.live,.cm.t i,.rot.sw{animation:none!important}.ln{stroke-dashoffset:0;animation:none!important}}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
+<div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
 <header><div class="w nav">
 <a class="logo" href="#top"><i></i>ApexVault Funding</a>
 <nav aria-label="Primary"><ul>
-<li><a href="#top">Home</a></li><li><a href="#challenges">Challenges</a></li><li><a href="#how">How It Works</a></li><li><a href="#rules">Trading Rules</a></li><li><a href="#payouts">Payouts</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li></ul></nav>
+<li><a href="#top">Home</a></li><li><a href="#challenges">Challenges</a></li><li><a href="#how">How It Works</a></li><li><a href="#rules">Trading Rules</a></li><li><a href="#payouts">Payouts</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#care">Support</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li></ul></nav>
 <div class="rt"><a class="btn si" href="#login">Sign In</a><a class="btn p" href="#challenges">Get Funded</a><button id="mb" aria-expanded="false" aria-controls="dr" aria-label="Menu">Menu</button></div>
 </div>
-<div id="dr"><a href="#challenges">Challenges</a><a href="#how">How It Works</a><a href="#rules">Trading Rules</a><a href="#payouts">Payouts</a><a href="#faq">FAQ</a><a href="#about">About</a><a href="#login">Sign In</a></div>
+<div id="dr"><a href="#challenges">Challenges</a><a href="#how">How It Works</a><a href="#rules">Trading Rules</a><a href="#payouts">Payouts</a><a href="#reviews">Reviews</a><a href="#care">Support</a><a href="#faq">FAQ</a><a href="#about">About</a><a href="#login">Sign In</a></div>
 </header>
 
 <main id="top" class="view" data-v="home">
 <div class="w hero">
 <div>
-<span class="badge">BUILT FOR SERIOUS TRADERS</span>
+<div class="badges"><span class="badge">BUILT FOR SERIOUS TRADERS</span><span class="badge r" id="rank">#1 PROP FIRM IN THE WORLD</span></div>
 <h1>Prove your edge.<br><span>Trade our capital.</span></h1>
 <p class="lead">Take the challenge, demonstrate consistency, and qualify for access to simulated funded trading capital under transparent trading objectives.</p>
-<div class="cta"><a class="btn p" href="#challenges">Start Your Challenge</a><a class="btn" href="#rules">View Trading Rules</a></div>
+<p class="lead" style="margin-top:10px">Choose your path: <b class="rot" id="rot">1-Step</b></p>
+<div class="cta"><a class="btn p" href="#challenges">Start Your Challenge</a><a class="btn" href="#rules">View Trading Rules</a><button type="button" class="btn" data-act="chat">Talk to Support</button></div>
 </div>
 <div class="dash" aria-label="Sample dashboard preview">
+<div class="fc a"><span class="live"></span>Sample: live equity</div><div class="fc b">&#10003; Sample: Phase 1 passed</div>
 <div class="dh"><span>Account #AV-100482 · MT5</span><span class="st">Evaluation</span></div>
 <div class="kp">
 <div class="k"><small>Balance</small><b>$51,284.10</b></div>
-<div class="k"><small>Equity</small><b>$51,402.55</b></div>
-<div class="k"><small>Daily P&amp;L</small><b class="up">+$318.40</b></div>
+<div class="k"><small>Equity</small><b id="heq">$51,402.55</b></div>
+<div class="k"><small>Daily P&amp;L</small><b class="up" id="hpl">+$318.40</b></div>
 </div>
 <svg viewBox="0 0 400 110" role="img" aria-label="Sample equity curve"><g stroke="#292D31"><path d="M0 27H400M0 55H400M0 83H400"/></g>
 <g stroke="#2DD4A0" stroke-width="1.2" opacity=".5"><path d="M20 70v22M50 60v20M80 66v18M110 48v24M140 52v20M170 38v22M200 44v18M230 30v22M260 34v18M290 22v20M320 26v16M350 14v20M380 18v14"/></g>
-<path d="M0 95C40 88 70 82 100 74S160 62 190 58 250 44 280 38 340 26 400 12" fill="none" stroke="#2DD4A0" stroke-width="2"/></svg>
+<path class="ln" pathLength="1" d="M0 95C40 88 70 82 100 74S160 62 190 58 250 44 280 38 340 26 400 12" fill="none" stroke="#2DD4A0" stroke-width="2"/></svg>
 <div class="bar">Profit target · 28% reached<div><i style="--w:28%"></i></div></div>
 <div class="bar d">Daily loss limit used · 12%<div><i style="--w:12%"></i></div></div>
 <div class="bar d">Max drawdown used · 21%<div><i style="--w:21%"></i></div></div>
@@ -186,6 +294,13 @@ dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border
 </div>
 </div>
 
+<div class="mq" aria-label="Platform highlights"><div class="mt" id="mqt"></div></div>
+<section class="stats" id="stats"><div class="w"><div class="stg">
+<div class="sc"><b data-count="238" data-pre="$" data-suf="M+">$238M+</b><span>Paid to traders</span></div>
+<div class="sc"><b>#1</b><span>Prop firm in the world</span></div>
+<div class="sc"><b data-count="4">4</b><span>Challenge models</span></div>
+<div class="sc"><b data-count="200" data-pre="$" data-suf="K">$200K</b><span>Largest account size</span></div>
+</div><p class="demo" style="text-align:center;margin-top:16px">Company-reported figures. Evaluation accounts use simulated capital and trading involves substantial risk.</p></div></section>
 <div class="strip"><div class="w">
 <div><b>Transparent rules</b><span>Published before you buy</span></div>
 <div><b>Clear objectives</b><span>Targets and limits in one view</span></div>
@@ -193,6 +308,15 @@ dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border
 <div><b>Support</b><span>Help when you need it</span></div>
 </div></div>
 
+<section id="models" style="padding-bottom:0"><div class="w">
+<h2>Choose your path to funding</h2>
+<p class="sub">Four ways to prove your edge. Pick the model that fits how you trade.</p>
+<div class="mg4">
+<div class="mdl"><span class="ph">1 PHASE</span><h3>1-Step Challenge</h3><p>One evaluation phase. Meet the objectives within the risk rules and move toward funded-stage access.</p><button type="button" class="btn" data-act="pick" data-t="1-Step">View 1-Step</button></div>
+<div class="mdl"><span class="ph">2 PHASES</span><h3>2-Step Challenge</h3><p>Two phases with a lower profit target in each. A balanced route to the funded stage.</p><button type="button" class="btn" data-act="pick" data-t="2-Step">View 2-Step</button></div>
+<div class="mdl"><span class="ph">3 PHASES</span><h3>3-Step Challenge</h3><p>Three smaller steps for a steadier pace, with a modest target at each stage.</p><button type="button" class="btn" data-act="pick" data-t="3-Step">View 3-Step</button></div>
+<div class="mdl ins"><span class="ph">NO EVALUATION</span><h3>Instant Funded</h3><p>Skip the evaluation phases and start on a funded-stage account from day one, under the firm's funded-stage terms.</p><button type="button" class="btn p" data-act="pick" data-t="Instant Funded">View Instant Funded</button></div>
+</div></div></section>
 <section id="challenges"><div class="w">
 <h2>Choose your challenge</h2>
 <p class="sub">Pick a model, platform, currency and size. Prices and terms come from one configuration object (later: your database).</p>
@@ -211,7 +335,7 @@ dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border
 </div></section>
 
 <section id="how" style="background:var(--rich);border-block:1px solid var(--line)"><div class="w">
-<h2>How it works</h2><p class="sub">Four stages from purchase to funded-stage access.</p>
+<h2>How it works</h2><p class="sub">Four stages from purchase to funded-stage access. Instant Funded accounts skip the evaluation and begin at the funded stage.</p>
 <div class="steps">
 <div class="step"><h3>Choose your challenge</h3><p>Select an account size and evaluation model.</p></div>
 <div class="step"><h3>Complete your evaluation</h3><p>Trade according to the published objectives and risk rules.</p></div>
@@ -242,17 +366,29 @@ dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border
 </div></section>
 
 <section><div class="w">
-<h2>What traders say</h2>
-<p class="note"><b>Sample testimonial area.</b> Replace sample testimonials with verified customer feedback before production launch. No reviews are shown until verified.</p>
+<h2 id="reviews">What traders say</h2><p class="sub">Traders from the USA and Canada share their experience.</p><div class="rvf" id="rvf" role="group" aria-label="Filter reviews by country"></div><div class="rg" id="rvg"></div>
+<p class="note" style="margin-top:18px"><b>Sample reviews.</b> The reviews above are labeled placeholders. Replace them with verified customer feedback before production launch.</p>
 </div></section>
 
+<section id="care" style="background:var(--rich);border-block:1px solid var(--line)"><div class="w">
+<h2>Customer care, built in</h2>
+<p class="sub">Get quick answers from our support assistant, or hand off to the support team with a ticket.</p>
+<div class="cg4">
+<div class="cc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><h3>Live chat</h3><p>Ask about challenges, rules, payments or your account.</p><button type="button" class="btn p" data-act="chat">Start chat</button></div>
+<div class="cc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/></svg></span><h3>Support tickets</h3><p>Track requests from your dashboard once you are signed in.</p><a class="btn" href="#support">Open tickets</a></div>
+<div class="cc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></svg></span><h3>Help Center</h3><p>Browse topics from getting started to payouts.</p><a class="btn" href="#help">Browse topics</a></div>
+<div class="cc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><h3>Contact us</h3><p>Send a message about anything account related.</p><a class="btn" href="#contact">Contact support</a></div>
+</div>
+<div class="chips" id="askc" aria-label="Popular questions"></div>
+<p class="demo">Chat answers come from an automated assistant. Ask for a human and it will point you to the support team.</p>
+</div></section>
 <section id="faq" style="padding-top:0"><div class="w">
 <h2>Frequently asked questions</h2><p class="sub">Answers are loaded from your configurable policy content.</p>
 <div id="faqs"></div>
 </div></section>
 </main>
 <main class="view pg" data-v="rules" hidden><div class="w"><h1>Trading rules</h1><p class="sub">Every rule below is read from the plan configuration. Items without a configured value show as pending.</p><p class="note"><b>Demo data.</b> Values shown come from the demo 1-Step plan and are not company policy until an administrator publishes them.</p><div id="rl" class="feat" style="margin-top:20px"></div></div></main>
-<main class="view pg" data-v="contact" hidden><div class="w" style="max-width:640px"><h1>Contact ApexVault</h1><p class="sub">Support phone, address and company details appear here only once configured.</p><form id="cf" class="fm"><label>Name<input required autocomplete="name"></label><label>Email<input type="email" required autocomplete="email"></label><label>Category<select><option>Account</option><option>Payment</option><option>Challenge</option><option>Trading rules</option><option>Payout</option><option>Verification</option><option>Technical</option><option>Other</option></select></label><label>Subject<input required></label><label>Message<textarea rows="5" required></textarea></label><button class="btn p">Send message</button><p id="cm" class="note" role="status">Backend required: this form is not connected to email or a ticket system, so nothing is sent yet.</p></form></div></main>
+<main class="view pg" data-v="contact" hidden><div class="w" style="max-width:640px"><h1>Contact ApexVault</h1><p class="sub">Support phone, address and company details appear here only once configured.</p><div class="gr2" id="ci" style="margin:0 0 22px"></div><form id="cf" class="fm"><label>Name<input required autocomplete="name"></label><label>Email<input type="email" required autocomplete="email"></label><label>Category<select><option>Account</option><option>Payment</option><option>Challenge</option><option>Trading rules</option><option>Payout</option><option>Verification</option><option>Technical</option><option>Other</option></select></label><label>Subject<input required></label><label>Message<textarea rows="5" required></textarea></label><button class="btn p">Send message</button><p id="cm" class="note" role="status">Backend required: this form is not connected to email or a ticket system, so nothing is sent yet.</p></form></div></main>
 <main class="view pg" data-v="help" hidden><div class="w"><h1>Help Center</h1><p class="sub">Search by topic. Articles are coming soon.</p><label class="fm" style="max-width:520px">Search help<input id="hs" type="search" placeholder="Try: payouts"></label><div id="hc" class="feat" style="margin-top:24px"></div><p id="he" class="note" hidden>No matching topics. Try another word or <a href="#contact" style="color:var(--ac)">contact support</a>.</p></div></main>
 <main class="view pg" data-v="status" hidden><div class="w" style="max-width:760px"><h1>System status</h1><p class="sub">Live monitoring is not connected, so no status or uptime figures are claimed.</p><div id="ss"></div></div></main>
 <main class="view pg" data-v="legal" hidden><div class="w" style="max-width:760px"><h1 id="lt"></h1><p class="note"><b>Template.</b> Placeholder text requires legal review for your jurisdictions before launch.</p><div id="lb"></div></div></main>
@@ -267,12 +403,20 @@ dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border
 <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#contact">Careers</a></li><li><a href="#affiliate">Affiliates</a></li></ul></div>
 <div><h4>Trading</h4><ul><li><a href="#challenges">Challenges</a></li><li><a href="#rules">Trading Rules</a></li><li><a href="#payouts">Payouts</a></li><li><a href="#faq">FAQ</a></li></ul></div>
 <div><h4>Legal</h4><ul><li><a href="#terms">Terms</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#risk">Risk Disclosure</a></li><li><a href="#refund">Refund Policy</a></li><li><a href="#aml">AML/KYC</a></li><li><a href="#cookies">Cookie Policy</a></li><li><a href="#trading-policy">Acceptable Trading</a></li><li><a href="#" id="ck">Cookie settings</a></li></ul></div>
-<div><h4>Support</h4><ul><li><a href="#help">Help Center</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="#status">System Status</a></li></ul><h4 style="margin-top:16px">Social</h4><p style="font-size:13px;color:var(--mu);margin:0">Not configured yet.</p></div>
+<div><h4>Support</h4><ul><li><a href="#help">Help Center</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="#status">System Status</a></li><li><a href="#care">Customer Care</a></li></ul><h4 style="margin-top:16px">Social</h4><p style="font-size:13px;color:var(--mu);margin:0">Not configured yet.</p></div>
 </div>
 <p class="risk">Trading leveraged financial markets involves substantial risk. Evaluation accounts use simulated capital. ApexVault Funding makes no claim of being regulated, licensed, insured or approved by any financial regulator. Legal wording must be reviewed for the jurisdictions in which the company operates. © ApexVault Funding.</p>
 </div></footer>
 
 <div id="ckb" role="dialog" aria-label="Cookie preferences" hidden><b>Cookie preferences</b><p style="color:var(--mu);font-size:13px;margin:6px 0">Optional categories stay off until you opt in. No analytics or marketing scripts are loaded in this prototype.</p><label><input type="checkbox" checked disabled> Necessary (always on)</label><label><input type="checkbox" id="ck-a"> Analytics</label><label><input type="checkbox" id="ck-m"> Marketing</label><button class="btn p" id="cks">Save preferences</button></div>
+<div id="chn" class="chn" role="status" hidden><span>Need help choosing a challenge? Chat with our support assistant.</span><button type="button" aria-label="Dismiss">&times;</button></div>
+<button id="chl" class="chl" type="button" aria-expanded="false" aria-controls="chp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chat with us</button>
+<div id="chp" class="chp" role="dialog" aria-label="Customer support chat" hidden>
+<div class="chh"><span class="av">AV</span><div><b>ApexVault Support</b><small><span class="live"></span>Automated assistant &middot; human handoff</small></div><button type="button" class="x" id="chx" aria-label="Close chat">&times;</button></div>
+<div id="chm" class="chm" role="log" aria-live="polite"></div>
+<div id="chq" class="chq"></div>
+<form id="chf" class="chf" autocomplete="off"><input id="chi" aria-label="Type your message" placeholder="Type your question..." maxlength="300"><button class="btn p">Send</button></form>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
 /* ===== SUPABASE CONFIG: paste your two values below (publishable key only, NEVER the secret/service-role key) ===== */
@@ -291,13 +435,16 @@ const C={
 <script>
 // Central demo configuration (placeholder values; replace via Supabase plans)
 const CFG={
- types:["1-Step","2-Step"],plats:["MT5","cTrader","Match-Trader"],curs:{USD:["$",1],GBP:["£",.79],EUR:["€",.92]},
+ types:["1-Step","2-Step","3-Step","Instant Funded"],plats:["MT5","cTrader","Match-Trader"],curs:{USD:["$",1],GBP:["£",.79],EUR:["€",.92]},
  popular:50000,
  sizes:[5000,10000,25000,50000,100000,200000],
  fee:{5000:49,10000:89,25000:199,50000:299,100000:499,200000:899},
+ feeT:{"1-Step":{5000:49,10000:89,25000:199,50000:299,100000:499,200000:899},"2-Step":{5000:39,10000:69,25000:159,50000:249,100000:399,200000:699},"3-Step":{5000:29,10000:55,25000:129,50000:199,100000:329,200000:599},"Instant Funded":{5000:99,10000:179,25000:399,50000:649,100000:1099,200000:1899}},
  rules:{"1-Step":{target:10,daily:3,max:6,days:3,period:"Unlimited",split:"Set by admin",lev:"1:30",refund:"Per refund policy"},
-        "2-Step":{target:"8% / 5%",daily:5,max:10,days:3,period:"Unlimited",split:"Set by admin",lev:"1:30",refund:"Per refund policy"}},
- faq:["What is a prop trading challenge?","How does the evaluation work?","What happens if I pass?","What are the loss limits?","Which trading platforms are available?","Can I trade during major news events?","Can I hold trades overnight?","Can I hold trades over weekends?","Are Expert Advisors allowed?","How do payouts work?","Can I purchase multiple challenges?","Can my challenge fee be refunded?","What payment methods are supported?","What happens if I violate a trading rule?"]
+        "2-Step":{target:"8% / 5%",daily:5,max:10,days:3,period:"Unlimited",split:"Set by admin",lev:"1:30",refund:"Per refund policy"},
+        "3-Step":{target:"6% / 6% / 6%",daily:4,max:8,days:3,period:"Unlimited",split:"Set by admin",lev:"1:30",refund:"Per refund policy"},
+        "Instant Funded":{target:"None",daily:3,max:6,days:5,period:"Unlimited",split:"Set by admin",lev:"1:30",refund:"Per refund policy"}},
+ faq:["What is a prop trading challenge?","How does the evaluation work?","What happens if I pass?","What are the loss limits?","Which trading platforms are available?","Can I trade during major news events?","Can I hold trades overnight?","Can I hold trades over weekends?","Are Expert Advisors allowed?","How do payouts work?","Can I purchase multiple challenges?","Can my challenge fee be refunded?","What payment methods are supported?","What happens if I violate a trading rule?","What is an Instant Funded account?","What is the difference between 1-Step, 2-Step and 3-Step?","How can I contact customer support?"]
 };
 const S={type:"1-Step",plat:"MT5",cur:"USD",size:50000};
 const $=s=>document.querySelector(s);
@@ -307,8 +454,8 @@ function seg(k,items){const el=$('[data-k='+k+']');el.innerHTML=items.map(i=>`<b
 let PLANS=null;const SYM={USD:"$",GBP:"£",EUR:"€"};
 function pf(z){return PLANS?PLANS.find(p=>p.challenge_type===S.type&&p.platform===S.plat&&p.currency===S.cur&&Number(p.account_size)===z):null}
 function sizesNow(){return PLANS?[...new Set(PLANS.filter(p=>p.challenge_type===S.type&&p.platform===S.plat&&p.currency===S.cur).map(p=>Number(p.account_size)))].sort((a,b)=>a-b):CFG.sizes}
-function feeOf(z){if(!PLANS)return CFG.fee[z];const p=pf(z);return p?num(p.fee):null}
-function ruleOf(z){if(!PLANS)return CFG.rules[S.type];const p=pf(z)||{};return{target:num(p.profit_target),daily:num(p.daily_loss_limit),max:num(p.max_drawdown),days:p.minimum_trading_days,period:p.maximum_trading_period,split:p.profit_split,lev:p.leverage,refund:"Not configured"}}
+function feeOf(z){if(!PLANS)return (CFG.feeT[S.type]||CFG.fee)[z];const p=pf(z);return p?num(p.fee):null}
+function ruleOf(z){if(!PLANS)return CFG.rules[S.type];const p=pf(z)||{};if(p._r)return p._r;return{target:num(p.profit_target),daily:num(p.daily_loss_limit),max:num(p.max_drawdown),days:p.minimum_trading_days,period:p.maximum_trading_period,split:p.profit_split,lev:p.leverage,refund:"Not configured"}}
 function normSel(){if(!PLANS)return;const f=(...c)=>PLANS.find(p=>c.every(([k,v])=>p[k]===v));
  if(!f(["challenge_type",S.type]))S.type=PLANS[0].challenge_type;
  if(!f(["challenge_type",S.type],["platform",S.plat]))S.plat=f(["challenge_type",S.type]).platform;
@@ -322,6 +469,7 @@ function render(){normSel();const sizes=sizesNow();
  $("#sizes").innerHTML=sizes.map(z=>`<button aria-pressed="${S.size===z}" data-z="${z}">${!PLANS&&CFG.popular===z?'<em>MOST POPULAR</em>':''}${fmt(z,S.cur)}</button>`).join("");
  $("#sizes").onclick=e=>{const b=e.target.closest("button");if(!b)return;S.size=+b.dataset.z;render()};
  const r=ruleOf(S.size),pct=p=>typeof p==="number"?p+"% ("+fmt(S.size*p/100,S.cur)+")":dv(p),fee=feeOf(S.size);
+ {const cd=$("#card");cd.classList.remove("cf2");void cd.offsetWidth;cd.classList.add("cf2")}
  $("#card").innerHTML=`<div><div style="color:var(--mu);font-size:13px">${esc(S.type)} · ${esc(S.plat)}</div><div style="font-size:22px;font-weight:700;margin:4px 0 16px">${fmt(S.size,S.cur)} account</div>
  <div class="price">${fee==null?"—":fmt(fee,S.cur)}<small>Challenge fee</small></div><a class="btn p" style="margin-top:18px" href="#checkout">Get this challenge</a></div>
  <dl class="spec"><div><dt>Profit target</dt><dd>${pct(r.target)}</dd></div><div><dt>Daily loss limit</dt><dd>${pct(r.daily)}</dd></div>
@@ -401,7 +549,7 @@ V.certificates=()=>`<h1>Certificates</h1><div class="ag">${["Challenge Passed","
 V.notifications=()=>`<h1>Notifications</h1><button class="btn" data-act="readall">Mark all as read</button><ul class="ul" style="margin-top:14px">${NOTE.map((n,i)=>`<li class="${n.r?"":"unr"}"><span><b>${n.t}</b><br><small style="color:var(--mu)">${n.m}</small></span>${n.r?`<span class="pill">Read</span>`:`<button class="btn" data-act="read" data-i="${i}">Mark as read</button>`}</li>`).join("")}</ul>${DM}`;
 V.security=()=>`<h1>Security</h1><div class="gr2"><div class="pn"><h3>Change password</h3><button class="btn" data-act="toast" data-t="Not changed. Requires backend with password confirmation or 2FA.">Change password</button></div><div class="pn"><h3>Two-factor authentication</h3><p class="demo">Status: not enabled</p><button class="btn" data-act="toast" data-t="2FA needs a backend. Nothing was enabled.">Enable 2FA</button></div><div class="pn"><h3>Active sessions</h3><p class="demo">DEMO: 1 session (this browser)</p><button class="btn" data-act="toast" data-t="No real sessions exist in this prototype.">Log out other sessions</button></div></div><h2 class="h3">Login history (demo)</h2>${tbl(["Date","Location","Device","Result"],[["2026-10-22","Not recorded","Browser","Success"],["2026-10-19","Not recorded","Browser","Success"]])}<h2 class="h3">Security alerts</h2><div class="note">No alerts. Demo only.</div>`;
 const TK=[["T-1001","Payment","Order shows pending","Waiting for Customer"],["T-1002","Verification","KYC question","Resolved"]];
-V.support=()=>`<h1>Support tickets</h1><button class="btn p" data-act="dlg" data-d="ticket">New support ticket</button><h2 class="h3">Open tickets</h2>${tbl(["ID","Category","Subject","Status"],TK.filter(t=>t[3]!=="Resolved"))}<h2 class="h3">Resolved tickets</h2>${tbl(["ID","Category","Subject","Status"],TK.filter(t=>t[3]==="Resolved").map(t=>[t[0],t[1],t[2],bd("Resolved")]))}<h2 class="h3">Ticket T-1001 (demo thread)</h2><div class="pn"><div class="ms me">Hi, my order shows pending after payment.</div><div class="ms su"><b>Support (demo)</b><br>Please share the transaction reference.</div><form class="fm" data-demo="Not sent. Ticketing backend not connected."><label>Reply<textarea rows="3"></textarea></label><button class="btn">Send reply</button>${msg}</form></div>`;
+V.support=()=>`<h1>Support tickets</h1><button class="btn p" data-act="dlg" data-d="ticket">New support ticket</button> <button class="btn" data-act="chat">Live chat</button><h2 class="h3">Open tickets</h2>${tbl(["ID","Category","Subject","Status"],TK.filter(t=>t[3]!=="Resolved"))}<h2 class="h3">Resolved tickets</h2>${tbl(["ID","Category","Subject","Status"],TK.filter(t=>t[3]==="Resolved").map(t=>[t[0],t[1],t[2],bd("Resolved")]))}<h2 class="h3">Ticket T-1001 (demo thread)</h2><div class="pn"><div class="ms me">Hi, my order shows pending after payment.</div><div class="ms su"><b>Support (demo)</b><br>Please share the transaction reference.</div><form class="fm" data-demo="Not sent. Ticketing backend not connected."><label>Reply<textarea rows="3"></textarea></label><button class="btn">Send reply</button>${msg}</form></div>`;
 V.affiliate=()=>`<h1>Affiliate</h1><p class="note">Optional program. Demo statistics only; no earnings are guaranteed.</p>${cards([["Referral code","DEMO123"],["Referral link","apexvault.example/?ref=DEMO123"],["Clicks",0],["Registrations",0],["Qualified purchases",0],["Commission",usd(0)],["Available",usd(0)],["Paid",usd(0)]])}${DM}`;
 const NAV=[["Overview","dashboard"],["My Accounts","accounts"],["Buy Challenge","challenges"],["Orders","orders"],["Transactions","transactions"],["Payouts","user-payouts"],["Certificates","certificates"],["Notifications","notifications"],["Verification","verification"],["Support","support"],["Affiliate","affiliate"],["Profile","profile"],["Security","security"],["Logout","logout"]];
 function renderApp(h){if(!READY){$("#ap").innerHTML='<p class="note" role="status">Loading…</p>';return}
@@ -449,6 +597,10 @@ document.addEventListener("click",e=>{const el=e.target.closest("[data-act],[dat
  else if(a==="read"){NOTE[+d.i].r=true;rr()}
  else if(a==="readall"){NOTE.forEach(n=>n.r=true);rr()}
 
+ else if(a==="chat")openChat();
+ else if(a==="ask"){openChat();ask(d.q)}
+ else if(a==="rf"){RF=d.v;revs(true)}
+ else if(a==="pick"){S.type=d.t;render();const t=document.getElementById("challenges");if(t)t.scrollIntoView({behavior:RED?"auto":"smooth"})}
  else if(a==="dlg"){$("#dgc").innerHTML=DL[d.d]();$("#dg").showModal()}
  else if(a==="close")$("#dg").close()});
 document.addEventListener("submit",e=>{const f=e.target;if(!f.matches("form"))return;
@@ -458,14 +610,91 @@ document.addEventListener("submit",e=>{const f=e.target;if(!f.matches("form"))re
  if(f.id==="ckf"){const ok=[...f.querySelectorAll("input")].every(i=>i.type==="checkbox"?i.checked:i.value.trim());say(ok?"Secure payment provider not connected. Connect a verified server-side payment integration before accepting live payments.":"Complete all fields and accept all three agreements to continue.");return}
  if(m)say(f.dataset.demo)});
 document.addEventListener("input",e=>{if(e.target.name!=="pw")return;const v=e.target.value,s=[v.length>=12,/[a-z]/.test(v),/[A-Z]/.test(v),/\d/.test(v),/[^\w]/.test(v)].filter(Boolean).length;$("#si").style.width=(v?s*20:0)+"%";$("#st").textContent=v?["weak","weak","fair","good","strong","strong"][s]:"none"});
+// ===== Lively UI, reviews and customer care (added) =====
+const nk=t=>String(t).toLowerCase().replace(/[^a-z0-9]/g,"");
+const DEMO_TYPES=["1-Step","2-Step","3-Step","Instant Funded"],DR={USD:1,GBP:.79,EUR:.92};
+function demoPlans(have){const out=[];DEMO_TYPES.filter(t=>!have.has(nk(t))).forEach(t=>CFG.plats.forEach(pl=>Object.keys(CFG.curs).forEach(c=>CFG.sizes.forEach(z=>out.push({id:"demo-"+[t,pl,c,z].join("-"),_demo:true,active:true,challenge_type:t,platform:pl,currency:c,account_size:z,fee:Math.round(CFG.feeT[t][z]*(DR[c]||1)),_r:CFG.rules[t]})))));return out}
+const RED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function countUp(el){const to=+el.dataset.count,pre=el.dataset.pre||"",suf=el.dataset.suf||"",t0=performance.now();
+ (function f(t){const p=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-p,3);el.textContent=pre+Math.round(to*e)+suf;if(p<1)requestAnimationFrame(f)})(t0)}
+const io=("IntersectionObserver" in window)?new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);if(el.dataset.count!==undefined)countUp(el);else el.classList.add("in")}),{threshold:.12}):null;
+function reveal(){$$(".rv:not(.in)").forEach(el=>{if(!io)el.classList.add("in");else if(!el._o){el._o=1;io.observe(el)}});
+ $$("[data-count]").forEach(el=>{if(RED||!io||el._o)return;el._o=1;el.textContent=(el.dataset.pre||"")+"0"+(el.dataset.suf||"");io.observe(el)})}
+const SUP={email:"",whatsapp:"",telegram:"",hours:""};
+const FLAG={us:`<svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" fill="#B22234"/>${[1,3,5,7,9,11].map(i=>`<rect y="${(i*20/13).toFixed(2)}" width="28" height="${(20/13).toFixed(2)}" fill="#fff"/>`).join("")}<rect width="11.2" height="10.77" fill="#3C3B6E"/>${[0,1,2].map(r=>[0,1,2,3].map(c=>`<circle cx="${(1.8+c*2.6).toFixed(1)}" cy="${(1.8+r*3.1).toFixed(1)}" r=".7" fill="#fff"/>`).join("")).join("")}</svg>`,
+ ca:`<svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" fill="#fff"/><rect width="7" height="20" fill="#D52B1E"/><rect x="21" width="7" height="20" fill="#D52B1E"/><polygon fill="#D52B1E" points="14,3 15.3,5.4 16.5,4.9 16,8.2 17.6,7 18,8.3 19.6,7.9 19,10.3 20,10.8 16.8,13.7 17,14.8 14.5,14.3 14.5,17.2 13.5,17.2 13.5,14.3 11,14.8 11.2,13.7 8,10.8 9,10.3 8.4,7.9 10,8.3 10.4,7 12,8.2 11.5,4.9 12.7,5.4"/></svg>`};
+/* SAMPLE reviews: replace with verified customer feedback before launch */
+const REV=[
+ {n:"Michael R.",c:"us",loc:"Texas, USA",m:"2-Step · $50K",t:"The rules were easy to find before I bought, and the dashboard makes tracking drawdown simple.",s:5},
+ {n:"Sarah L.",c:"ca",loc:"Ontario, Canada",m:"1-Step · $25K",t:"I liked seeing targets and limits in one view. Support answered my questions clearly.",s:5},
+ {n:"Daniel K.",c:"us",loc:"Florida, USA",m:"Instant Funded · $10K",t:"Starting on a funded-stage account without an evaluation suits my style. Clean platform.",s:5},
+ {n:"Emily T.",c:"ca",loc:"British Columbia, Canada",m:"3-Step · $100K",t:"Smaller steps kept me disciplined. Everything was clearly laid out from purchase onward.",s:4},
+ {n:"Jason M.",c:"us",loc:"California, USA",m:"2-Step · $100K",t:"Good choice of platforms and account sizes, and checking progress from the dashboard is quick.",s:5},
+ {n:"Chloe B.",c:"ca",loc:"Quebec, Canada",m:"1-Step · $10K",t:"Straightforward process and transparent objectives. Easy to start with a smaller size.",s:5}];
+let RF="all";
+function revs(anim){const L=REV.filter(r=>RF==="all"||r.c===RF);
+ $("#rvf").innerHTML=[["all","All"],["us","USA"],["ca","Canada"]].map(([k,l])=>`<button type="button" aria-pressed="${RF===k}" data-act="rf" data-v="${k}">${k==="all"?"":`<span class="flg">${FLAG[k]}</span>`}${l}</button>`).join("");
+ $("#rvg").innerHTML=L.map((r,i)=>`<article class="rev rv${anim?" in":""}" style="--d:${(i*.07).toFixed(2)}s"><div class="stars" role="img" aria-label="${r.s} out of 5 stars">${"★".repeat(r.s)}${"☆".repeat(5-r.s)}</div><p>&ldquo;${esc(r.t)}&rdquo;</p><div class="rw"><span class="av">${esc(r.n.split(" ").map(x=>x[0]).join(""))}</span><div><b style="font-size:14px">${esc(r.n)}</b><small><span class="flg">${FLAG[r.c]}</span>${esc(r.loc)}</small><small>${esc(r.m)} <span class="pill">SAMPLE</span></small></div></div></article>`).join("");reveal()}
+const MQ=["1-Step Challenge","2-Step Challenge","3-Step Challenge","Instant Funded","MT5","cTrader","Match-Trader","Transparent rules","Live trader dashboard","Customer care chat","Accounts up to $200K","Clear risk limits"];
+$("#mqt").innerHTML=[0,1].map(i=>`<div class="mg"${i?' aria-hidden="true"':""}>${MQ.map(t=>`<span>${esc(t)}</span>`).join("")}</div>`).join("");
+const ASK=["What challenges do you offer?","How do payouts work?","What are the loss limits?","Which platforms can I trade on?","Talk to a human"];
+$("#askc").innerHTML=ASK.map(x=>`<button type="button" data-act="ask" data-q="${esc(x)}">${esc(x)}</button>`).join("");
+{const mailL=SUP.email?`<a href="mailto:${esc(SUP.email)}" style="color:var(--ac)">${esc(SUP.email)}</a>`:"Not configured yet";
+ $("#ci").innerHTML=[["Live chat",`Ask the support assistant or request a person.<br><button type="button" class="btn p" data-act="chat" style="margin-top:10px">Open chat</button>`],["Email",mailL],["Support hours",esc(SUP.hours)||"Configured by administrator"]].concat(SUP.whatsapp?[["WhatsApp",esc(SUP.whatsapp)]]:[],SUP.telegram?[["Telegram",esc(SUP.telegram)]]:[]).map(([t,b])=>`<div class="pn" style="margin:0"><small style="color:var(--mu);font-size:12px">${t}</small><p style="margin:6px 0 0">${b}</p></div>`).join("")}
+$$(".feat>div,.step,.strip .w>div,section>.w>h2,section>.w>.sub,.tw,.cc,.mdl,.sc").forEach(el=>{el.classList.add("rv");const i=[...el.parentElement.children].indexOf(el);el.style.setProperty("--d",(Math.min(i,6)*.07).toFixed(2)+"s")});
+revs(false);reveal();
+(function(){const r=$("#rot");if(!r||RED)return;let i=0;setInterval(()=>{i=(i+1)%CFG.types.length;r.textContent=CFG.types[i];r.classList.remove("sw");void r.offsetWidth;r.classList.add("sw")},2200)})();
+(function(){const q=$("#heq"),p=$("#hpl");if(!q||!p||RED)return;let d=0;setInterval(()=>{if(document.hidden)return;d=Math.max(-120,Math.min(160,d+(Math.random()*60-28)));q.textContent=usd(51402.55+d);const v=318.40+d;p.textContent=(v<0?"-":"+")+usd(Math.abs(v));p.className=v<0?"dn":"up"},2200)})();
+(function(){const h=document.querySelector("header"),b=document.createElement("div");b.className="spb";b.setAttribute("aria-hidden","true");h.appendChild(b);let t=0;
+ const u=()=>{t=0;const m=document.documentElement.scrollHeight-innerHeight;b.style.width=(m>0?Math.min(100,scrollY/m*100):0)+"%"};
+ addEventListener("scroll",()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})();
+/* ---- customer care chat ---- */
+const P=v=>v==null?"not set":typeof v==="number"?v+"%":String(v);
+const HAND=()=>[SESSION?"Open a support ticket":"Contact support",SESSION?"#support":"#contact"];
+const KB=[
+ [/human|agent|person|representative|talk to|ticket|complain|real support/i,()=>["I can point you to our support team. Open a ticket and include your account number and any order or transaction reference.",[HAND()]]],
+ [/instant/i,()=>["Instant Funded accounts skip the evaluation phases and start at the funded stage, under the firm's funded-stage terms. See pricing and limits for each size in the Challenges section.",[["See Instant Funded","#challenges","Instant Funded"]]]],
+ [/payout|withdraw|reward|split/i,()=>["Payout eligibility, profit split and timing come from your funded-stage terms. Requests are made from Dashboard > Payouts, and identity verification may apply.",[["Payout overview","#payouts"]]]],
+ [/loss|drawdown|limit|rule|target/i,()=>{const r=ruleOf(S.size);return [`For the ${S.type} plan currently selected (${fmt(S.size,S.cur)}): profit target ${P(r.target)}, daily loss limit ${P(r.daily)}, maximum loss ${P(r.max)}. Limits can differ by model and size.`,[["Full trading rules","#rules"],["Compare accounts","#compare"]]]}],
+ [/platform|mt5|ctrader|match.?trader/i,()=>[`Available platforms: ${CFG.plats.join(", ")}. Choose yours in the Challenges section.`,[["Choose a challenge","#challenges"]]]],
+ [/1.?step|2.?step|3.?step|challenge|model|phase|evaluation|differen/i,()=>["We offer four models: 1-Step, 2-Step, 3-Step and Instant Funded. The step models use one to three evaluation phases, while Instant Funded skips them. Compare them in the Challenges section.",[["Compare challenges","#challenges"]]]],
+ [/price|fee|cost|how much|size/i,()=>["Fees depend on the model, platform, currency and account size. Pick a combination in the Challenges section to see the price.",[["See pricing","#challenges"]]]],
+ [/refund|money back/i,()=>["Refund terms are set out in the Refund Policy.",[["Read Refund Policy","#refund"]]]],
+ [/password|log ?in|sign ?in|forgot|account access/i,()=>["If you cannot sign in, use the password reset to get a new link.",[["Reset password","#forgot-password"]]]],
+ [/kyc|verif|identity/i,()=>["Identity verification may be required before a payout. You can start it from Dashboard > Verification.",[["Open verification","#verification"]]]],
+ [/pay(ment)?|card|crypto|checkout|order|buy|purchase/i,()=>["Challenges are purchased at checkout. Available payment methods depend on the integrations the company has enabled.",[["Browse challenges","#challenges"]]]],
+ [/^(hi|hello|hey|good (morning|afternoon|evening))\b/i,()=>["Hello! What would you like to know about challenges, rules, payouts or your account?",[]]],
+ [/thank/i,()=>["You're welcome. Is there anything else I can help with?",[]]]];
+function reply(t){const m=KB.find(([re])=>re.test(t));return m?m[1]():["I'm not sure about that one. I can help with challenges, trading rules, payouts, platforms and account questions, or you can reach the support team.",[HAND()]]}
+const WELCOME="Hi, I'm the ApexVault support assistant (automated). Ask about challenges, trading rules, payouts or your account, or pick a topic below. I can hand you to the support team for anything specific to your account.";
+const bm=(t,l)=>esc(t)+(l||[]).map(([a,h,p])=>`<br><a href="${h}"${p?` data-pick="${esc(p)}"`:""}>${esc(a)} &rarr;</a>`).join("");
+const chl=$("#chl"),chp=$("#chp"),chm=$("#chm"),chq=$("#chq"),chi=$("#chi"),chn=$("#chn");
+let chatInit=false,busy=false;
+function addMsg(c,h){const d=document.createElement("div");d.className="cm "+c;d.innerHTML=h;chm.appendChild(d);chm.scrollTop=chm.scrollHeight;return d}
+function ask(q){q=String(q||"").trim();if(!q||busy)return;busy=true;addMsg("u",esc(q));const tp=addMsg("t","<i></i><i></i><i></i>"),[tx,ln]=reply(q);
+ setTimeout(()=>{tp.className="cm b";tp.innerHTML=bm(tx,ln);chm.scrollTop=chm.scrollHeight;busy=false},RED?0:650+Math.min(800,tx.length*5))}
+function openChat(){chp.hidden=false;chl.setAttribute("aria-expanded","true");chn.hidden=true;
+ if(!chatInit){chatInit=true;addMsg("b",esc(WELCOME));chq.innerHTML=ASK.map(x=>`<button type="button" data-act="ask" data-q="${esc(x)}">${esc(x)}</button>`).join("")}
+ setTimeout(()=>chi.focus(),50)}
+function closeChat(f){chp.hidden=true;chl.setAttribute("aria-expanded","false");if(f!==false)chl.focus()}
+chl.onclick=()=>chp.hidden?openChat():closeChat();
+$("#chx").onclick=()=>closeChat();
+$("#chf").onsubmit=e=>{e.preventDefault();const v=chi.value;chi.value="";ask(v)};
+chm.onclick=e=>{const a=e.target.closest("a");if(!a)return;if(a.dataset.pick){S.type=a.dataset.pick;render()}
+ const h=(a.getAttribute("href")||"").slice(1);if(h&&location.hash.slice(1)===h){e.preventDefault();const t=document.getElementById(h);if(t)t.scrollIntoView({behavior:RED?"auto":"smooth"})}closeChat(false)};
+chn.onclick=e=>{if(e.target.closest("button")){chn.hidden=true;return}openChat()};
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!chp.hidden)closeChat()});
+setTimeout(()=>{if(chp.hidden)chn.hidden=false},9000);
 // ===== Supabase auth, loading and guards =====
 const q=(t)=>sb.from(t).select("*").then(r=>{D.err[t]=r.error?r.error.message:null;const rows=r.data||[];return rows.sort((a,b)=>String(b.created_at||"").localeCompare(String(a.created_at||"")))});
 function applyPlans(rows){const ok=rows.filter(p=>p.active!==false&&num(p.account_size)!=null&&p.challenge_type&&p.platform&&p.currency&&num(p.fee)!=null);if(!ok.length)return false;
- PLANS=ok;CFG.types=[...new Set(ok.map(p=>p.challenge_type))];CFG.plats=[...new Set(ok.map(p=>p.platform))];CFG.curs={};
- ok.forEach(p=>{CFG.curs[p.currency]=[SYM[p.currency]||p.currency+" ",1]});CFG.popular=null;return true}
+ const dbT=[...new Set(ok.map(p=>p.challenge_type))];CFG.plats=[...new Set(ok.map(p=>p.platform))];CFG.curs={};
+ ok.forEach(p=>{CFG.curs[p.currency]=[SYM[p.currency]||p.currency+" ",1]});CFG.popular=null;
+ PLANS=ok.concat(demoPlans(new Set(dbT.map(nk))));
+ CFG.types=DEMO_TYPES.map(t=>dbT.find(x=>nk(x)===nk(t))||t).concat(dbT.filter(t=>!DEMO_TYPES.some(d=>nk(d)===nk(t))));return true}
 async function loadPlans(){const el=$("#psrc");if(!sb){el.textContent="Demo plans shown: Supabase is not configured.";return}
  const rows=await q("challenge_plans");D.plans=rows;
- if(applyPlans(rows)){render();el.textContent="Plans loaded from Supabase. Options not listed have no plan in the database."}
+ if(applyPlans(rows)){render();el.textContent="Plans loaded from Supabase. Challenge models without database plans show demo pricing until you add them."}
  else el.textContent=D.err.challenge_plans?"Demo plans shown: could not load Supabase plans ("+D.err.challenge_plans+").":"Demo plans shown: no active plans found in Supabase."}
 async function loadAll(){if(!sb||!SESSION)return;const uid=SESSION.user.id;
  const [p,a,o,t,pr]=await Promise.all([sb.from("profiles").select("*").eq("id",uid).maybeSingle(),q("trading_accounts"),q("orders"),q("transactions"),q("payout_requests")]);
