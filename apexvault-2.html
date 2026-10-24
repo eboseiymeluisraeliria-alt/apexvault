@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ApexVault Funding | Prop Trading Challenges</title>
+<meta name="description" content="Take the challenge, demonstrate consistency, and qualify for simulated funded trading capital under transparent objectives.">
+<style>
+:root{color-scheme:dark;--bg:#08090A;--rich:#0C0D0F;--ash:#151719;--elev:#1D2023;--line:#292D31;--tx:#F5F7F8;--mu:#A5ABB2;--ac:#2DD4A0;--bad:#F0707A;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Inter","Segoe UI",system-ui,sans-serif;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 70% 0,rgba(8,9,10,.2),var(--bg) 70%);z-index:-1}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.w{max-width:1200px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(8,9,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.logo i{width:22px;height:22px;border:2px solid var(--ac);transform:rotate(45deg);display:block}
+nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px;font-size:14px;color:var(--mu)}
+nav ul a:hover{color:var(--tx)}
+.btn{display:inline-block;padding:11px 20px;border-radius:4px;font-weight:600;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--tx);cursor:pointer;transition:transform .15s,border-color .15s}
+.btn:active{transform:scale(.97)}
+.btn.p{background:var(--ac);border-color:var(--ac);color:#04130E}
+.btn:hover{border-color:var(--ac)}
+.rt{display:flex;gap:10px;align-items:center}
+.rt .si{display:none}
+#mb{background:none;border:1px solid var(--line);color:var(--tx);border-radius:4px;padding:8px 12px;cursor:pointer}
+#dr{display:none;border-top:1px solid var(--line);padding:12px 20px 20px}
+#dr.o{display:block}
+#dr a{display:block;padding:12px 0;border-bottom:1px solid var(--line);color:var(--mu)}
+@media(min-width:960px){nav ul{display:flex}#mb,#dr{display:none!important}.rt .si{display:inline-block}}
+.hero{padding:56px 0 40px;display:grid;gap:40px}
+@media(min-width:960px){.hero{grid-template-columns:1fr 1.05fr;align-items:center;padding:88px 0 56px}}
+.badge{display:inline-block;border:1px solid var(--line);background:var(--ash);color:var(--ac);font-size:12px;letter-spacing:.12em;padding:6px 12px;border-radius:3px}
+h1{font-size:clamp(36px,6.2vw,68px);line-height:1.03;margin:18px 0;letter-spacing:-.025em;font-weight:800}
+h1 span{color:var(--mu)}
+.lead{color:var(--mu);max-width:520px;font-size:17px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.dash{background:linear-gradient(180deg,var(--elev),var(--ash));border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:0 30px 80px -30px rgba(45,212,160,.18);position:relative;overflow:hidden}
+.dh{display:flex;justify-content:space-between;font-size:13px;color:var(--mu);margin-bottom:14px;gap:8px;flex-wrap:wrap}
+.st{color:var(--ac);border:1px solid var(--ac);padding:1px 8px;border-radius:3px;font-size:12px}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.k{background:var(--rich);border:1px solid var(--line);border-radius:4px;padding:10px}
+.k small{color:var(--mu);font-size:11px;display:block}
+.k b{font-size:15px;font-variant-numeric:tabular-nums}
+.up{color:var(--ac)}
+.dash svg{width:100%;height:auto;display:block;margin:14px 0 6px}
+.bar{margin-top:10px;font-size:12px;color:var(--mu)}
+.bar div{height:6px;background:var(--rich);border-radius:3px;margin-top:5px;overflow:hidden}
+.bar div i{display:block;height:100%;background:var(--ac);width:0;animation:g 1.4s .3s forwards cubic-bezier(.2,.8,.2,1)}
+.bar.d div i{background:var(--bad)}
+@keyframes g{to{width:var(--w)}}
+.demo{font-size:11px;color:var(--mu);margin-top:12px}
+.strip{border-block:1px solid var(--line);background:var(--rich)}
+.strip .w{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-block:22px}
+@media(min-width:760px){.strip .w{grid-template-columns:repeat(4,1fr)}}
+.strip b{display:block;font-size:15px}.strip span{color:var(--mu);font-size:13px}
+section{padding:80px 0}
+h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin:0 0 10px}
+.sub{color:var(--mu);max-width:620px;margin:0 0 32px}
+.ctl{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:22px}
+.grp{display:flex;flex-direction:column;gap:6px}
+.grp label{font-size:12px;color:var(--mu)}
+.seg{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--rich)}
+.seg button{background:none;border:0;color:var(--mu);padding:9px 14px;cursor:pointer;font:inherit;font-size:14px}
+.seg button[aria-pressed=true]{background:var(--elev);color:var(--tx);box-shadow:inset 0 -2px var(--ac)}
+.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}
+@media(min-width:760px){.sizes{grid-template-columns:repeat(6,1fr)}}
+.sizes button{background:var(--ash);border:1px solid var(--line);color:var(--tx);padding:14px 4px;border-radius:4px;cursor:pointer;font:600 15px inherit;font-family:inherit;position:relative}
+.sizes button[aria-pressed=true]{border-color:var(--ac);background:var(--elev)}
+.sizes em{position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-style:normal;font-size:10px;background:var(--ac);color:#04130E;padding:1px 7px;border-radius:3px;white-space:nowrap}
+.card{background:var(--ash);border:1px solid var(--line);border-radius:8px;padding:24px;display:grid;gap:22px}
+@media(min-width:860px){.card{grid-template-columns:1fr 1.4fr;padding:32px}}
+.price{font-size:44px;font-weight:800;font-variant-numeric:tabular-nums}
+.price small{display:block;font-size:13px;font-weight:400;color:var(--mu)}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin:0}
+.spec div{padding:10px 0;border-bottom:1px solid var(--line)}
+.spec dt{font-size:12px;color:var(--mu)}.spec dd{margin:0;font-weight:600}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--ash)}
+table{border-collapse:collapse;width:100%;min-width:820px;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mu);font-weight:500;font-size:12px;background:var(--rich)}
+tr:last-child td{border:0}tr.hl td{background:rgba(45,212,160,.06)}
+.steps{display:grid;gap:20px;counter-reset:s}
+@media(min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{border-left:2px solid var(--line);padding:2px 0 2px 18px;position:relative}
+.step:before{counter-increment:s;content:counter(s);position:absolute;left:-13px;top:0;width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--ac);color:var(--ac);font-size:12px;display:grid;place-items:center}
+@media(min-width:860px){.step{border-left:0;border-top:2px solid var(--line);padding:22px 0 0}.step:before{left:0;top:-13px}}
+.step h3{margin:0 0 6px;font-size:17px}.step p{margin:0;color:var(--mu);font-size:14px}
+.feat{display:grid;gap:14px}
+@media(min-width:700px){.feat{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.feat{grid-template-columns:repeat(3,1fr)}}
+.feat div{background:var(--ash);border:1px solid var(--line);border-radius:6px;padding:22px;transition:border-color .2s}
+.feat div:hover{border-color:#3a4046}
+.feat h3{margin:0 0 6px;font-size:16px}.feat p{margin:0;color:var(--mu);font-size:14px}
+.note{border:1px dashed var(--line);border-radius:6px;padding:16px 18px;color:var(--mu);font-size:14px;background:var(--rich)}
+.note b{color:var(--tx)}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;padding:16px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--ac);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 16px;color:var(--mu);font-size:15px;max-width:720px}
+footer{border-top:1px solid var(--line);background:var(--rich);padding:56px 0 32px}
+.fg{display:grid;gap:32px}
+@media(min-width:860px){.fg{grid-template-columns:1.6fr 1fr 1fr 1fr 1fr}}
+footer h4{margin:0 0 10px;font-size:13px;color:var(--mu);font-weight:500}
+footer li{list-style:none;margin-bottom:6px;font-size:14px}footer ul{padding:0;margin:0}
+.risk{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--mu);line-height:1.7}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}.bar div i{width:var(--w)}}
+.pg{padding:56px 0 80px;min-height:60vh}.pg h1{font-size:clamp(30px,5vw,48px);margin:0 0 12px}
+.view[hidden]{display:none}
+.fm{display:grid;gap:14px}.fm label{display:grid;gap:6px;font-size:13px;color:var(--mu)}
+.fm input,.fm select,.fm textarea{background:var(--rich);border:1px solid var(--line);color:var(--tx);border-radius:4px;padding:12px;font:inherit;min-height:44px}
+.fm button{justify-self:start;min-height:44px}
+.sv{display:flex;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.pill{border:1px solid var(--line);color:var(--mu);font-size:12px;padding:2px 10px;border-radius:3px;white-space:nowrap}
+.rc small{display:block;color:var(--mu);font-size:12px;margin-bottom:4px}
+#ckb{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;max-width:560px;background:var(--elev);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#ckb[hidden]{display:none}#ckb label{display:flex;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.shell{display:grid;min-height:calc(100vh - 64px)}
+.sb{position:fixed;inset:0 auto 0 0;width:260px;max-width:84vw;background:var(--rich);border-right:1px solid var(--line);padding:calc(76px + env(safe-area-inset-top,0px)) 12px 20px;overflow-y:auto;transform:translateX(-100%);transition:transform .2s;z-index:15}
+.sb.o{transform:none}
+.sb a,.sb button{display:block;width:100%;text-align:left;background:none;border:0;color:var(--mu);padding:11px 12px;min-height:44px;border-radius:4px;font:inherit;font-size:14px;cursor:pointer}
+.sb a:hover,.sb button:hover{color:var(--tx);background:var(--ash)}.sb .on{color:var(--tx);background:var(--elev);box-shadow:inset 2px 0 var(--ac)}
+.sb h4{margin:6px 12px 10px;font-size:12px;color:var(--ac);font-weight:500}
+.mc{padding:20px;min-width:0}.tb{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:22px}
+.mc h1{font-size:clamp(26px,4vw,36px);margin:0 0 18px}.h3{font-size:18px;margin:30px 0 12px;letter-spacing:0}
+@media(min-width:960px){.shell{grid-template-columns:260px 1fr}.sb{position:sticky;top:64px;height:calc(100vh - 64px);transform:none;padding-top:20px;width:auto;max-width:none}#sbt{display:none}.mc{padding:28px 32px}}
+.inapp footer{display:none}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 14px}
+.cg .k b{font-size:16px;word-break:break-word}
+.pn{background:var(--ash);border:1px solid var(--line);border-radius:6px;padding:20px;margin-bottom:16px}
+.ag{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.ac{background:var(--ash);border:1px solid var(--line);border-radius:6px;padding:18px}
+.ac .spec{grid-template-columns:1fr 1fr;gap:0 14px}.ac .btn{margin:12px 8px 0 0}
+.ch svg{width:100%;height:auto;display:block}
+.dn{color:var(--bad)}.pill.ok{color:var(--ac);border-color:var(--ac)}.pill.bad{color:var(--bad);border-color:var(--bad)}
+.seg.wr{flex-wrap:wrap;margin-bottom:18px}
+.co{display:grid;gap:16px}@media(min-width:860px){.co{grid-template-columns:1.3fr 1fr;align-items:start}}
+.cb{display:flex!important;grid-template-columns:none!important;flex-direction:row;gap:10px;align-items:flex-start;color:var(--tx)!important}.cb input{min-height:0!important;width:18px;margin-top:3px}
+.pwr{display:flex;gap:8px}.pwr input{flex:1;min-width:0}
+.ul{list-style:none;margin:0;padding:0}.ul li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:center}
+.unr{box-shadow:inset 3px 0 var(--ac);padding-left:12px!important}
+.ms{max-width:560px;padding:12px 14px;border-radius:6px;margin:8px 0;font-size:14px}.ms.me{background:var(--elev)}.ms.su{background:var(--rich);border:1px solid var(--line)}
+dialog{background:var(--ash);color:var(--tx);border:1px solid var(--line);border-radius:6px;padding:22px;width:min(520px,92vw)}dialog::backdrop{background:rgba(0,0,0,.7)}
+#ts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:92vw;width:520px;background:var(--elev);border:1px solid var(--ac);border-radius:6px;padding:14px 16px;font-size:14px;z-index:40}#ts[hidden]{display:none}
+.fm.pn{margin:0}.bar.d i{background:var(--bad)}
+.gr2{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+</style>
+</head>
+<body>
+<header><div class="w nav">
+<a class="logo" href="#top"><i></i>ApexVault Funding</a>
+<nav aria-label="Primary"><ul>
+<li><a href="#top">Home</a></li><li><a href="#challenges">Challenges</a></li><li><a href="#how">How It Works</a></li><li><a href="#rules">Trading Rules</a></li><li><a href="#payouts">Payouts</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li></ul></nav>
+<div class="rt"><a class="btn si" href="#login">Sign In</a><a class="btn p" href="#challenges">Get Funded</a><button id="mb" aria-expanded="false" aria-controls="dr" aria-label="Menu">Menu</button></div>
+</div>
+<div id="dr"><a href="#challenges">Challenges</a><a href="#how">How It Works</a><a href="#rules">Trading Rules</a><a href="#payouts">Payouts</a><a href="#faq">FAQ</a><a href="#about">About</a><a href="#login">Sign In</a></div>
+</header>
+
+<main id="top" class="view" data-v="home">
+<div class="w hero">
+<div>
+<span class="badge">BUILT FOR SERIOUS TRADERS</span>
+<h1>Prove your edge.<br><span>Trade our capital.</span></h1>
+<p class="lead">Take the challenge, demonstrate consistency, and qualify for access to simulated funded trading capital under transparent trading objectives.</p>
+<div class="cta"><a class="btn p" href="#challenges">Start Your Challenge</a><a class="btn" href="#rules">View Trading Rules</a></div>
+</div>
+<div class="dash" aria-label="Sample dashboard preview">
+<div class="dh"><span>Account #AV-100482 · MT5</span><span class="st">Evaluation</span></div>
+<div class="kp">
+<div class="k"><small>Balance</small><b>$51,284.10</b></div>
+<div class="k"><small>Equity</small><b>$51,402.55</b></div>
+<div class="k"><small>Daily P&amp;L</small><b class="up">+$318.40</b></div>
+</div>
+<svg viewBox="0 0 400 110" role="img" aria-label="Sample equity curve"><g stroke="#292D31"><path d="M0 27H400M0 55H400M0 83H400"/></g>
+<g stroke="#2DD4A0" stroke-width="1.2" opacity=".5"><path d="M20 70v22M50 60v20M80 66v18M110 48v24M140 52v20M170 38v22M200 44v18M230 30v22M260 34v18M290 22v20M320 26v16M350 14v20M380 18v14"/></g>
+<path d="M0 95C40 88 70 82 100 74S160 62 190 58 250 44 280 38 340 26 400 12" fill="none" stroke="#2DD4A0" stroke-width="2"/></svg>
+<div class="bar">Profit target · 28% reached<div><i style="--w:28%"></i></div></div>
+<div class="bar d">Daily loss limit used · 12%<div><i style="--w:12%"></i></div></div>
+<div class="bar d">Max drawdown used · 21%<div><i style="--w:21%"></i></div></div>
+<p class="demo">Sample data for illustration only. Trading days: 4.</p>
+</div>
+</div>
+
+<div class="strip"><div class="w">
+<div><b>Transparent rules</b><span>Published before you buy</span></div>
+<div><b>Clear objectives</b><span>Targets and limits in one view</span></div>
+<div><b>Trader dashboard</b><span>Track progress live</span></div>
+<div><b>Support</b><span>Help when you need it</span></div>
+</div></div>
+
+<section id="challenges"><div class="w">
+<h2>Choose your challenge</h2>
+<p class="sub">Pick a model, platform, currency and size. Prices and terms come from one configuration object (later: your database).</p>
+<div class="ctl">
+<div class="grp"><label id="l1">Challenge type</label><div class="seg" role="group" aria-labelledby="l1" data-k="type"></div></div>
+<div class="grp"><label id="l2">Platform</label><div class="seg" role="group" aria-labelledby="l2" data-k="plat"></div></div>
+<div class="grp"><label id="l3">Currency</label><div class="seg" role="group" aria-labelledby="l3" data-k="cur"></div></div>
+</div>
+<div class="sizes" id="sizes" role="group" aria-label="Account size"></div>
+<div class="card" id="card" aria-live="polite"></div>
+<p class="demo" id="psrc" style="margin-top:14px">Demo configuration: all fees and trading terms are placeholders until set by the administrator.</p>
+
+<h2 style="margin-top:72px" id="compare">Compare accounts</h2>
+<p class="sub">Every size for the selected model, side by side.</p>
+<div class="tw"><table id="cmp"></table></div>
+</div></section>
+
+<section id="how" style="background:var(--rich);border-block:1px solid var(--line)"><div class="w">
+<h2>How it works</h2><p class="sub">Four stages from purchase to funded-stage access.</p>
+<div class="steps">
+<div class="step"><h3>Choose your challenge</h3><p>Select an account size and evaluation model.</p></div>
+<div class="step"><h3>Complete your evaluation</h3><p>Trade according to the published objectives and risk rules.</p></div>
+<div class="step"><h3>Get verified</h3><p>Complete any required verification and agreement process after meeting the evaluation criteria.</p></div>
+<div class="step"><h3>Trade &amp; earn</h3><p>Access your funded-stage account per the firm's terms and become eligible for applicable performance rewards.</p></div>
+</div></div></section>
+
+<section><div class="w">
+<h2>Why ApexVault</h2><p class="sub">Built around clarity and disciplined risk.</p>
+<div class="feat">
+<div><h3>Transparent trading rules</h3><p>Clearly presented objectives and risk limits.</p></div>
+<div><h3>Trader dashboard</h3><p>Track account statistics and evaluation progress.</p></div>
+<div><h3>Multiple account sizes</h3><p>Different challenge sizes for different experience levels.</p></div>
+<div><h3>Risk management</h3><p>Clearly defined daily and overall loss parameters.</p></div>
+<div><h3>Support</h3><p>Easy access to customer support and help documentation.</p></div>
+<div><h3>Secure account system</h3><p>Modern authentication and security architecture.</p></div>
+</div></div></section>
+
+<section id="payouts" style="background:var(--rich);border-block:1px solid var(--line)"><div class="w">
+<h2>Payout process</h2>
+<p class="sub">Eligibility, request, verification and processing steps appear here once the business configures them.</p>
+<div class="feat">
+<div><h3>Eligibility</h3><p>Defined by your configured funded-stage terms.</p></div>
+<div><h3>Profit split</h3><p>Shown from the active plan configuration.</p></div>
+<div><h3>Request and verification</h3><p>Submit from your dashboard; identity checks may apply.</p></div>
+</div>
+<p class="note" style="margin-top:18px"><b>Admin:</b> payout percentages, timings and conditions are not displayed until configured. No payout proof is shown.</p>
+</div></section>
+
+<section><div class="w">
+<h2>What traders say</h2>
+<p class="note"><b>Sample testimonial area.</b> Replace sample testimonials with verified customer feedback before production launch. No reviews are shown until verified.</p>
+</div></section>
+
+<section id="faq" style="padding-top:0"><div class="w">
+<h2>Frequently asked questions</h2><p class="sub">Answers are loaded from your configurable policy content.</p>
+<div id="faqs"></div>
+</div></section>
+</main>
+<main class="view pg" data-v="rules" hidden><div class="w"><h1>Trading rules</h1><p class="sub">Every rule below is read from the plan configuration. Items without a configured value show as pending.</p><p class="note"><b>Demo data.</b> Values shown come from the demo 1-Step plan and are not company policy until an administrator publishes them.</p><div id="rl" class="feat" style="margin-top:20px"></div></div></main>
+<main class="view pg" data-v="contact" hidden><div class="w" style="max-width:640px"><h1>Contact ApexVault</h1><p class="sub">Support phone, address and company details appear here only once configured.</p><form id="cf" class="fm"><label>Name<input required autocomplete="name"></label><label>Email<input type="email" required autocomplete="email"></label><label>Category<select><option>Account</option><option>Payment</option><option>Challenge</option><option>Trading rules</option><option>Payout</option><option>Verification</option><option>Technical</option><option>Other</option></select></label><label>Subject<input required></label><label>Message<textarea rows="5" required></textarea></label><button class="btn p">Send message</button><p id="cm" class="note" role="status">Backend required: this form is not connected to email or a ticket system, so nothing is sent yet.</p></form></div></main>
+<main class="view pg" data-v="help" hidden><div class="w"><h1>Help Center</h1><p class="sub">Search by topic. Articles are coming soon.</p><label class="fm" style="max-width:520px">Search help<input id="hs" type="search" placeholder="Try: payouts"></label><div id="hc" class="feat" style="margin-top:24px"></div><p id="he" class="note" hidden>No matching topics. Try another word or <a href="#contact" style="color:var(--ac)">contact support</a>.</p></div></main>
+<main class="view pg" data-v="status" hidden><div class="w" style="max-width:760px"><h1>System status</h1><p class="sub">Live monitoring is not connected, so no status or uptime figures are claimed.</p><div id="ss"></div></div></main>
+<main class="view pg" data-v="legal" hidden><div class="w" style="max-width:760px"><h1 id="lt"></h1><p class="note"><b>Template.</b> Placeholder text requires legal review for your jurisdictions before launch.</p><div id="lb"></div></div></main>
+
+<main class="view" data-v="app" hidden><div class="shell"><aside id="dsb" class="sb" aria-label="Dashboard navigation"></aside><div class="mc"><div class="tb"><button id="sbt" class="btn" aria-expanded="false" aria-controls="dsb">Menu</button><span class="pill">Real: your Supabase records · Demo: trading metrics, chart, notifications</span><button class="btn" id="bell">Notifications <b id="bc"></b></button></div><section id="ap"></section></div></div></main>
+<main class="view pg" data-v="auth" hidden><div class="w" style="max-width:560px" id="au"></div></main>
+<dialog id="dg" aria-label="Dialog"><div id="dgc"></div><button class="btn" data-act="close" style="margin-top:14px">Close</button></dialog>
+<div id="ts" role="status" hidden></div>
+<footer id="about"><div class="w">
+<div class="fg">
+<div><a class="logo" href="#top"><i></i>ApexVault Funding</a><p style="color:var(--mu);font-size:14px;max-width:320px">A modern proprietary trading evaluation platform built around transparent objectives and disciplined risk management.</p></div>
+<div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#contact">Careers</a></li><li><a href="#affiliate">Affiliates</a></li></ul></div>
+<div><h4>Trading</h4><ul><li><a href="#challenges">Challenges</a></li><li><a href="#rules">Trading Rules</a></li><li><a href="#payouts">Payouts</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="#terms">Terms</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#risk">Risk Disclosure</a></li><li><a href="#refund">Refund Policy</a></li><li><a href="#aml">AML/KYC</a></li><li><a href="#cookies">Cookie Policy</a></li><li><a href="#trading-policy">Acceptable Trading</a></li><li><a href="#" id="ck">Cookie settings</a></li></ul></div>
+<div><h4>Support</h4><ul><li><a href="#help">Help Center</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="#status">System Status</a></li></ul><h4 style="margin-top:16px">Social</h4><p style="font-size:13px;color:var(--mu);margin:0">Not configured yet.</p></div>
+</div>
+<p class="risk">Trading leveraged financial markets involves substantial risk. Evaluation accounts use simulated capital. ApexVault Funding makes no claim of being regulated, licensed, insured or approved by any financial regulator. Legal wording must be reviewed for the jurisdictions in which the company operates. © ApexVault Funding.</p>
+</div></footer>
+
+<div id="ckb" role="dialog" aria-label="Cookie preferences" hidden><b>Cookie preferences</b><p style="color:var(--mu);font-size:13px;margin:6px 0">Optional categories stay off until you opt in. No analytics or marketing scripts are loaded in this prototype.</p><label><input type="checkbox" checked disabled> Necessary (always on)</label><label><input type="checkbox" id="ck-a"> Analytics</label><label><input type="checkbox" id="ck-m"> Marketing</label><button class="btn p" id="cks">Save preferences</button></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ===== SUPABASE CONFIG: paste your two values below (publishable key only, NEVER the secret/service-role key) ===== */
+const SUPABASE_URL = "https://enszymndsxyupkafgzdk.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_TXSBo2kbJlWXRD-At7xLPw_xt8bnkcC";
+// The global from the CDN stays untouched as window.supabase; our client lives in its own variable.
+let supabaseClient = null, SUPABASE_INIT_ERROR = null;
+try {
+  if (SUPABASE_URL.startsWith("PASTE") || SUPABASE_PUBLISHABLE_KEY.startsWith("PASTE")) throw new Error("Supabase URL or publishable key not set.");
+  if (!window.supabase || typeof window.supabase.createClient !== "function") throw new Error("The Supabase library failed to load from the CDN. Check your connection or ad blocker, then reload.");
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+  if (!supabaseClient || !supabaseClient.auth || typeof supabaseClient.from !== "function") throw new Error("Supabase client was created without auth or database modules.");
+} catch (e) { supabaseClient = null; SUPABASE_INIT_ERROR = e.message; console.error("Supabase init failed:", e); }
+/* ===== COLUMN MAP: matches your Supabase schema. Fields starting with _ are derived in the browser. ===== */
+const C={
+ profile:{first:"first_name",last:"last_name"},
+ acc:{id:"account_number",plat:"platform",phase:"phase",status:"status",bal:"current_balance",eq:"equity",start:"starting_balance",dd:"current_drawdown",days:"trading_days"},
+ orders:[["Order","order_number"],["Date","created_at"],["Challenge","_plan"],["Account size","_size"],["Platform","_plat"],["Amount","amount"],["Payment status","payment_status"],["Reference","payment_reference"]],
+ tx:[["Reference","transaction_reference"],["Date","created_at"],["Type","transaction_type"],["Amount","amount"],["Status","status"],["Provider","provider"]],
+ payouts:[["Request","payout_reference"],["Date","requested_at"],["Account","_account"],["Amount","amount"],["Status","status"],["Reason","rejection_reason"]]
+};
+</script>
+<script>
+// Central demo configuration (placeholder values; replace via Supabase plans)
+const CFG={
+ types:["1-Step","2-Step"],plats:["MT5","cTrader","Match-Trader"],curs:{USD:["$",1],GBP:["£",.79],EUR:["€",.92]},
+ popular:50000,
+ sizes:[5000,10000,25000,50000,100000,200000],
+ fee:{5000:49,10000:89,25000:199,50000:299,100000:499,200000:899},
+ rules:{"1-Step":{target:10,daily:3,max:6,days:3,period:"Unlimited",split:"Set by admin",lev:"1:30",refund:"Per refund policy"},
+        "2-Step":{target:"8% / 5%",daily:5,max:10,days:3,period:"Unlimited",split:"Set by admin",lev:"1:30",refund:"Per refund policy"}},
+ faq:["What is a prop trading challenge?","How does the evaluation work?","What happens if I pass?","What are the loss limits?","Which trading platforms are available?","Can I trade during major news events?","Can I hold trades overnight?","Can I hold trades over weekends?","Are Expert Advisors allowed?","How do payouts work?","Can I purchase multiple challenges?","Can my challenge fee be refunded?","What payment methods are supported?","What happens if I violate a trading rule?"]
+};
+const S={type:"1-Step",plat:"MT5",cur:"USD",size:50000};
+const $=s=>document.querySelector(s);
+const fmt=(n,c)=>{const[sy,r]=CFG.curs[c],v=n*r;return sy+v.toLocaleString("en-US",{minimumFractionDigits:Number.isInteger(v)?0:2,maximumFractionDigits:2})};
+function seg(k,items){const el=$('[data-k='+k+']');el.innerHTML=items.map(i=>`<button aria-pressed="${S[k==='plat'?'plat':k]===i}" data-v="${i}">${i}</button>`).join("");
+ el.onclick=e=>{const b=e.target.closest("button");if(!b)return;S[k]=b.dataset.v;render()}}
+let PLANS=null;const SYM={USD:"$",GBP:"£",EUR:"€"};
+function pf(z){return PLANS?PLANS.find(p=>p.challenge_type===S.type&&p.platform===S.plat&&p.currency===S.cur&&Number(p.account_size)===z):null}
+function sizesNow(){return PLANS?[...new Set(PLANS.filter(p=>p.challenge_type===S.type&&p.platform===S.plat&&p.currency===S.cur).map(p=>Number(p.account_size)))].sort((a,b)=>a-b):CFG.sizes}
+function feeOf(z){if(!PLANS)return CFG.fee[z];const p=pf(z);return p?num(p.fee):null}
+function ruleOf(z){if(!PLANS)return CFG.rules[S.type];const p=pf(z)||{};return{target:num(p.profit_target),daily:num(p.daily_loss_limit),max:num(p.max_drawdown),days:p.minimum_trading_days,period:p.maximum_trading_period,split:p.profit_split,lev:p.leverage,refund:"Not configured"}}
+function normSel(){if(!PLANS)return;const f=(...c)=>PLANS.find(p=>c.every(([k,v])=>p[k]===v));
+ if(!f(["challenge_type",S.type]))S.type=PLANS[0].challenge_type;
+ if(!f(["challenge_type",S.type],["platform",S.plat]))S.plat=f(["challenge_type",S.type]).platform;
+ if(!f(["challenge_type",S.type],["platform",S.plat],["currency",S.cur]))S.cur=f(["challenge_type",S.type],["platform",S.plat]).currency;
+ const z=sizesNow();if(!z.includes(S.size))S.size=z[0]}
+const dv=v=>v==null||v===""?"—":esc(v);
+const spl=v=>num(v)==null?dv(v):(num(v)<=1?Math.round(num(v)*100):num(v))+"%";
+const lev=v=>num(v)==null?dv(v):"1:"+num(v);
+function render(){normSel();const sizes=sizesNow();
+ seg("type",CFG.types);seg("plat",CFG.plats);seg("cur",Object.keys(CFG.curs));
+ $("#sizes").innerHTML=sizes.map(z=>`<button aria-pressed="${S.size===z}" data-z="${z}">${!PLANS&&CFG.popular===z?'<em>MOST POPULAR</em>':''}${fmt(z,S.cur)}</button>`).join("");
+ $("#sizes").onclick=e=>{const b=e.target.closest("button");if(!b)return;S.size=+b.dataset.z;render()};
+ const r=ruleOf(S.size),pct=p=>typeof p==="number"?p+"% ("+fmt(S.size*p/100,S.cur)+")":dv(p),fee=feeOf(S.size);
+ $("#card").innerHTML=`<div><div style="color:var(--mu);font-size:13px">${esc(S.type)} · ${esc(S.plat)}</div><div style="font-size:22px;font-weight:700;margin:4px 0 16px">${fmt(S.size,S.cur)} account</div>
+ <div class="price">${fee==null?"—":fmt(fee,S.cur)}<small>Challenge fee</small></div><a class="btn p" style="margin-top:18px" href="#checkout">Get this challenge</a></div>
+ <dl class="spec"><div><dt>Profit target</dt><dd>${pct(r.target)}</dd></div><div><dt>Daily loss limit</dt><dd>${pct(r.daily)}</dd></div>
+ <div><dt>Maximum loss</dt><dd>${pct(r.max)}</dd></div><div><dt>Min. trading days</dt><dd>${dv(r.days)}</dd></div>
+ <div><dt>Max. trading period</dt><dd>${dv(r.period)}</dd></div><div><dt>Profit split</dt><dd>${spl(r.split)}</dd></div>
+ <div><dt>Leverage</dt><dd>${lev(r.lev)}</dd></div><div><dt>Refundable fee</dt><dd>${dv(r.refund)}</dd></div><div><dt>Platform</dt><dd>${esc(S.plat)}</dd></div></dl>`;
+ $("#cmp").innerHTML=`<thead><tr><th>Account size</th><th>Fee</th><th>Profit target</th><th>Daily loss</th><th>Max drawdown</th><th>Profit split</th><th>Leverage</th><th>Period</th></tr></thead><tbody>`+
+ sizes.map(z=>{const q=ruleOf(z),f=feeOf(z),p=v=>v==null?"—":v+"%";return `<tr class="${z===S.size?'hl':''}"><td>${fmt(z,S.cur)}</td><td>${f==null?"—":fmt(f,S.cur)}</td><td>${typeof q.target==="number"?p(q.target):dv(q.target)}</td><td>${p(q.daily)}</td><td>${p(q.max)}</td><td>${spl(q.split)}</td><td>${lev(q.lev)}</td><td>${dv(q.period)}</td></tr>`}).join("")+`</tbody>`;
+}
+render();
+$("#faqs").innerHTML=CFG.faq.map(q=>`<details><summary>${q}</summary><p>Answer pulled from the company's configured policy. Not yet set in this demo.</p></details>`).join("");
+const mb=$("#mb"),dr=$("#dr");mb.onclick=()=>{const o=dr.classList.toggle("o");mb.setAttribute("aria-expanded",o)};
+dr.onclick=e=>{if(e.target.tagName==="A"){dr.classList.remove("o");mb.setAttribute("aria-expanded","false")}};
+const ROUTES={rules:"Trading Rules",contact:"Contact",help:"Help Center",status:"System Status",terms:"Terms & Conditions",privacy:"Privacy Policy",refund:"Refund Policy",risk:"Risk Disclosure",aml:"AML/KYC Policy",cookies:"Cookie Policy","trading-policy":"Acceptable Trading Policy"};
+const LEGAL=["terms","privacy","refund","risk","aml","cookies","trading-policy"];
+const RC=[["Profit targets","target"],["Daily loss","daily"],["Maximum drawdown","max"],["Minimum trading days","days"],["Maximum trading period","period"],["Leverage","lev"],["News trading"],["Weekend holding"],["Overnight holding"],["Expert Advisors"],["Copy trading"],["Prohibited strategies"],["Account sharing"],["IP/VPN policy"],["Inactivity"],["Consistency rules"],["Maximum allocation"],["Account merging"],["Rule violations"]];
+$("#rl").innerHTML=RC.map(([n,k])=>{const v=k&&CFG.rules["1-Step"][k];return `<div class="rc"><small>${k?"Demo value":"Configured by administrator"}</small><h3>${n}</h3><p>${k?(typeof v==="number"?v+"%":v):"Policy text not yet published."}</p></div>`}).join("");
+const HC=["Getting started","Challenges","Trading rules","Accounts","Payments","Payouts","Verification","Technical support"];
+function hlist(){const q=$("#hs").value.toLowerCase(),m=HC.filter(c=>c.toLowerCase().includes(q));$("#hc").innerHTML=m.map(c=>`<div><h3>${c}</h3><p>Articles coming soon.</p></div>`).join("");$("#he").hidden=m.length>0}
+$("#hs").oninput=hlist;hlist();
+$("#ss").innerHTML=["Website","Dashboard","Authentication","Trading data","Payments","Support"].map(s=>`<div class="sv"><span>${s}</span><span class="pill">Monitoring not connected</span></div>`).join("");
+$("#cf").onsubmit=e=>{e.preventDefault();$("#cm").textContent="Not sent. Connect a backend and email or ticket provider to enable this form."};
+function legal(h){$("#lt").textContent=ROUTES[h];$("#lb").innerHTML=["Company details: [legal entity, registration number and address to be supplied]","Scope and effective date: [to be completed]","Policy content: [to be drafted and reviewed by qualified counsel]","Regulatory status: [state only what is true and verifiable]"].map((t,i)=>`<details ${i?"":"open"}><summary>${t.split(":")[0]}</summary><p>${t.split(":").slice(1).join(":").trim()}</p></details>`).join("")}
+
+const ckb=$("#ckb");try{if(!localStorage.getItem("av_ck"))ckb.hidden=false}catch(e){ckb.hidden=false}
+$("#cks").onclick=()=>{try{localStorage.setItem("av_ck",JSON.stringify({a:$("#ck-a").checked,m:$("#ck-m").checked}))}catch(e){}ckb.hidden=true};
+$("#ck").onclick=e=>{e.preventDefault();ckb.hidden=false};
+const $$=s=>[...document.querySelectorAll(s)];
+const usd=n=>"$"+Number(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const toast=m=>{const t=$("#ts");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,5000)};
+let ACCTS=[
+{id:"AV-100482",size:50000,plat:"MT5",phase:"Evaluation",bal:51284.10,eq:51402.55,today:318.40,dd:2.1,days:4,status:"Evaluation"},
+{id:"AV-100377",size:25000,plat:"cTrader",phase:"Phase 2",bal:25610,eq:25588.2,today:-42.5,dd:1.2,days:7,status:"Phase 2"},
+{id:"AV-099911",size:10000,plat:"MT5",phase:"Funded",bal:10420,eq:10420,today:0,dd:.8,days:12,status:"Funded Stage"},
+{id:"AV-099120",size:5000,plat:"Match-Trader",phase:"Breached",bal:4480,eq:4480,today:0,dd:10.4,days:5,status:"Breached"}];
+ACCTS.forEach(a=>{a.pl=a.bal-a.size;a.prog=Math.max(0,Math.min(100,a.pl/(a.size*.1)*100))});
+const NOTE=[["Challenge activated","Account AV-100482 is ready."],["Payment confirmed","Order AV-ORD-2001."],["Phase completed","AV-100377 moved to Phase 2."],["Verification required","Complete identity verification before a payout."],["Payout update","Request DEMO-PO-3003 is under review."],["Support reply","New reply on ticket T-1001."],["Security alert","New sign-in detected."]].map((n,i)=>({t:n[0],m:n[1],r:i>2}));
+let cur=null,ord=null;const F={acc:"All",tx:"All"};
+const bd=s=>`<span class="pill ${/Breach|Rejected|Failed/.test(s)?"bad":/Funded|Passed|Paid|Verified|Approved|Active|Operational/.test(s)?"ok":""}">${esc(s)}</span>`;
+const tbl=(h,r)=>`<div class="tw"><table style="min-width:600px"><thead><tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${r.map(a=>`<tr>${a.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+const cards=a=>`<div class="cg">${a.map(([l,v])=>`<div class="k"><small>${l}</small><b>${v}</b></div>`).join("")}</div>`;
+const pb=(l,p,c="")=>`<div class="bar ${c}">${l}<div><i style="--w:${p}%"></i></div></div>`;
+const EQ=[50000,50120,49890,50310,50540,50480,50910,51120,51050,51284];
+const chart=p=>{const mn=Math.min(...p),mx=Math.max(...p),y=v=>(150-(v-mn)/(mx-mn||1)*140).toFixed(1),d=p.map((v,i)=>(i?"L":"M")+(i*600/(p.length-1)).toFixed(1)+" "+y(v)).join("");return `<svg viewBox="0 0 600 160" role="img" aria-label="Demo equity curve"><path d="${d}L600 160L0 160Z" fill="rgba(45,212,160,.08)"/><path d="${d}" fill="none" stroke="#2DD4A0" stroke-width="2"/></svg>`};
+const DM=`<p class="demo">DEMO DATA. Not live trading data.</p>`;
+const fl=(s,l)=>`<div class="seg wr" role="group" aria-label="Filter">${l.map(x=>`<button data-act="f" data-s="${s}" data-v="${x}" aria-pressed="${F[s]===x}">${x}</button>`).join("")}</div>`;
+const msg=`<p class="note fmsg" role="status" hidden></p>`;
+const V={};
+// ===== Supabase-backed data layer and views =====
+const D={profile:null,plans:[],orders:[],tx:[],payouts:[],err:{}};let SESSION=null,READY=false;
+function num(v){return v==null||v===""||!isFinite(+v)?null:+v}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+const U=v=>v==null?"—":usd(v);
+function cv(k,v,r={}){if(v==null||v==="")return "—";
+ if(/_at$/.test(k))return esc(String(v).slice(0,10));
+ if(/status/.test(k))return bd(String(v));
+ if(/amount|size|balance|equity/.test(k)&&num(v)!=null){const c=r.currency;return c&&c!=="USD"?num(v).toLocaleString("en-US",{minimumFractionDigits:2})+" "+esc(c):usd(num(v))}
+ return esc(v)}
+const sum=(rows,re)=>rows.filter(r=>re.test(String(r.status||"").toLowerCase())).reduce((s,r)=>s+(num(r.amount)||0),0);
+const note=(t,rows,empty)=>D.err[t]?`<div class="note" role="alert">Could not load ${t}: ${esc(D.err[t])}. Check your RLS policies and the column map.</div>`:rows.length?"":`<div class="note">${empty}</div>`;
+const dt=(cols,rows,ex)=>tbl(cols.map(c=>c[0]).concat(ex?["Action"]:[]),rows.map((r,i)=>cols.map(c=>cv(c[1],r[c[1]],r)).concat(ex?[ex(r,i)]:[])));
+const CTA=`<a href="#challenges" style="color:var(--ac)">Browse challenges</a>`;
+function norm(r){const c=C.acc,pl=D.plans.find(p=>p.id===r.challenge_plan_id),a={uuid:r.id,id:r[c.id],plat:r[c.plat],phase:r[c.phase],status:r[c.status],bal:num(r[c.bal]),eq:num(r[c.eq]),start:num(r[c.start]),dd:num(r[c.dd]),days:num(r[c.days]),today:null};a.size=pl?num(pl.account_size):a.start;const b=a.start??a.size;a.pl=a.bal!=null&&b!=null?a.bal-b:null;return a}
+const acct=a=>`<div class="pn"><div class="dh"><span>${esc(a.id)} · ${esc(a.plat??"—")}</span>${bd(a.status??"—")}</div>`+cards([["Account size",U(a.size)],["Phase",esc(a.phase??"—")],["Starting balance",U(a.start)],["Current balance",U(a.bal)],["Equity",U(a.eq)],["Total P&L",a.pl==null?"—":`<span class="${a.pl>=0?"up":"dn"}">${usd(a.pl)}</span>`],["Today's P&L",U(a.today)],["Max drawdown",a.dd==null?"—":esc(a.dd)+"%"],["Trading days",a.days??"—"]])+`<div class="ch">${chart(EQ)}</div><p class="demo">Chart is DEMO DATA. Balance, equity and status come from your account record; "—" means no trading-data provider is connected yet.</p></div>`;
+const phaseOk=(a,f)=>f==="All"||String(a.phase||"").toLowerCase().replace(/_/g," ").startsWith(f.toLowerCase());
+V.dashboard=()=>{const A=ACCTS,fu=A.filter(a=>/funded/i.test((a.phase||"")+(a.status||""))),live=A.filter(a=>!/breach|funded/i.test((a.phase||"")+(a.status||"")));
+ return `<h1>Welcome back, ${esc(D.profile?.[C.profile.first]||"Trader")}</h1>`+cards([["Active challenges",live.length],["Funded accounts",fu.length],["Paid rewards",usd(sum(D.payouts,/paid/))],["Pending payouts",usd(sum(D.payouts,/pending|review|approved|processing/))],["Pending orders",D.orders.filter(o=>/pending/i.test(o.payment_status)).length]])+(D.err.trading_accounts?note("trading_accounts",A):A.length?acct(A[0])+`<a class="btn" data-acct="${esc(A[0].id)}" href="#account-detail">Open account details</a>`:`<div class="note">No trading accounts yet. ${CTA}</div>`)};
+V.accounts=()=>{const L=ACCTS.filter(a=>phaseOk(a,F.acc));return `<h1>My accounts</h1>${fl("acc",["All","Evaluation","Phase 2","Passed","Funded","Breached"])}${D.err.trading_accounts?note("trading_accounts",ACCTS):L.length?`<div class="ag">${L.map(a=>`<div class="ac"><div class="dh"><b>${esc(a.id)}</b>${bd(a.status??"—")}</div><dl class="spec"><div><dt>Size</dt><dd>${U(a.size)}</dd></div><div><dt>Platform</dt><dd>${esc(a.plat??"—")}</dd></div><div><dt>Phase</dt><dd>${esc(a.phase??"—")}</dd></div><div><dt>Balance</dt><dd>${U(a.bal)}</dd></div><div><dt>Profit</dt><dd>${U(a.pl)}</dd></div><div><dt>Drawdown</dt><dd>${a.dd==null?"—":esc(a.dd)+"%"}</dd></div><div><dt>Trading days</dt><dd>${a.days??"—"}</dd></div><div><dt>Target progress</dt><dd>—</dd></div></dl><a class="btn p" data-acct="${esc(a.id)}" href="#account-detail">View dashboard</a><a class="btn" href="#rules">View rules</a></div>`).join("")}</div>`:`<div class="note">${ACCTS.length?"No accounts in this stage.":"No trading accounts yet. "+CTA}</div>`}`};
+V["account-detail"]=()=>{const a=cur;if(!a)return `<h1>Account</h1><div class="note">Select an account from <a href="#accounts" style="color:var(--ac)">My accounts</a>.</div>`;return `<h1>Account ${esc(a.id)}</h1><p class="sub">Credentials are shown only if your backend provisions them securely.</p>${acct(a)}<h2 class="h3">Trading objectives</h2><p class="demo">DEMO DATA until a trading-data provider is connected.</p>${tbl(["Objective","Required","Current","Status"],[["Profit target","—","—",bd("In Progress")],["Min trading days","—",a.days??"—",bd("In Progress")],["Max drawdown","—",a.dd==null?"—":esc(a.dd)+"%",bd("In Progress")]])}<h2 class="h3">Trading history</h2><div class="note">No trade data. Requires a trading-platform integration.</div><h2 class="h3">Rule violations</h2><div class="note">None recorded. Violations are detected server-side once a risk engine exists.</div>`};
+V.orders=()=>`<h1>My orders</h1>`+(note("orders",D.orders,"No orders yet. "+CTA)||dt(C.orders,D.orders,(r,i)=>`<a class="btn" data-order="${i}" href="#order-detail">View</a>`));
+V["order-detail"]=()=>ord?`<h1>Order</h1><div class="pn"><dl class="spec">${C.orders.map(([l,k])=>`<div><dt>${l}</dt><dd>${cv(k,ord[k])}</dd></div>`).join("")}</dl></div>`:`<h1>Order</h1><div class="note">Select an order from <a href="#orders" style="color:var(--ac)">My orders</a>.</div>`;
+V.transactions=()=>{const m={All:/./,Purchases:/purchase/i,Payouts:/payout|reward/i,Refunds:/refund/i},k=C.tx[2][1],L=D.tx.filter(t=>m[F.tx].test(String(t[k]||"")));return `<h1>Transactions</h1>${fl("tx",Object.keys(m))}`+(note("transactions",D.tx,"No transactions yet.")||(L.length?dt(C.tx,L):`<div class="note">No transactions of this type.</div>`))};
+V["user-payouts"]=()=>`<h1>Payouts</h1>${cards([["Available reward","—"],["Pending",usd(sum(D.payouts,/pending|review|approved|processing/))],["Lifetime paid",usd(sum(D.payouts,/paid/))],["Next eligible date","—"]])}<p class="demo">Available amount and eligibility are calculated by the backend, not shown here yet.</p><button class="btn p" data-act="dlg" data-d="payout">Request payout</button><h2 class="h3">Payout history</h2>`+(note("payout_requests",D.payouts,"No payout requests yet.")||dt(C.payouts,D.payouts));
+V.profile=()=>{const p=D.profile||{};return `<h1>Profile</h1>${D.err.profiles?note("profiles",[]):""}<form class="fm pn" data-demo="Profile editing is not enabled yet. It needs an update policy limited to safe columns."><label>First name<input readonly value="${esc(p[C.profile.first])}"></label><label>Last name<input readonly value="${esc(p[C.profile.last])}"></label><label>Email<input readonly value="${esc(SESSION?.user?.email)}"></label><button class="btn p">Save changes</button>${msg}</form>`};
+V.verification=()=>`<h1>Identity verification</h1><div class="pn"><div class="dh"><span>Status</span>${bd("Not Started")}</div><p style="color:var(--mu)">Verification may be required before payouts, to meet anti-money-laundering obligations. Other states: Pending, Verified, Rejected, Action Required.</p><button class="btn p" data-act="msg" data-t="Identity verification provider not connected.">Start verification</button>${msg}</div>`;
+V.certificates=()=>`<h1>Certificates</h1><div class="ag">${["Challenge Passed","Funded Trader","Performance Milestone"].map((t,i)=>`<div class="ac"><span class="pill">DEMO CERTIFICATE</span><h3>${t}</h3><dl class="spec"><div><dt>Certificate ID</dt><dd>DEMO-CERT-000${i+1}</dd></div><div><dt>Trader</dt><dd>Demo Trader</dd></div><div><dt>Account</dt><dd>${esc((ACCTS[i]||{}).id)}</dd></div><div><dt>Date</dt><dd>2026-10-0${i+1}</dd></div></dl><button class="btn" data-act="dlg" data-d="c${i}">View certificate</button></div>`).join("")}</div><p class="demo">Real certificates are issued only after the backend confirms a qualifying event.</p>`;
+V.notifications=()=>`<h1>Notifications</h1><button class="btn" data-act="readall">Mark all as read</button><ul class="ul" style="margin-top:14px">${NOTE.map((n,i)=>`<li class="${n.r?"":"unr"}"><span><b>${n.t}</b><br><small style="color:var(--mu)">${n.m}</small></span>${n.r?`<span class="pill">Read</span>`:`<button class="btn" data-act="read" data-i="${i}">Mark as read</button>`}</li>`).join("")}</ul>${DM}`;
+V.security=()=>`<h1>Security</h1><div class="gr2"><div class="pn"><h3>Change password</h3><button class="btn" data-act="toast" data-t="Not changed. Requires backend with password confirmation or 2FA.">Change password</button></div><div class="pn"><h3>Two-factor authentication</h3><p class="demo">Status: not enabled</p><button class="btn" data-act="toast" data-t="2FA needs a backend. Nothing was enabled.">Enable 2FA</button></div><div class="pn"><h3>Active sessions</h3><p class="demo">DEMO: 1 session (this browser)</p><button class="btn" data-act="toast" data-t="No real sessions exist in this prototype.">Log out other sessions</button></div></div><h2 class="h3">Login history (demo)</h2>${tbl(["Date","Location","Device","Result"],[["2026-10-22","Not recorded","Browser","Success"],["2026-10-19","Not recorded","Browser","Success"]])}<h2 class="h3">Security alerts</h2><div class="note">No alerts. Demo only.</div>`;
+const TK=[["T-1001","Payment","Order shows pending","Waiting for Customer"],["T-1002","Verification","KYC question","Resolved"]];
+V.support=()=>`<h1>Support tickets</h1><button class="btn p" data-act="dlg" data-d="ticket">New support ticket</button><h2 class="h3">Open tickets</h2>${tbl(["ID","Category","Subject","Status"],TK.filter(t=>t[3]!=="Resolved"))}<h2 class="h3">Resolved tickets</h2>${tbl(["ID","Category","Subject","Status"],TK.filter(t=>t[3]==="Resolved").map(t=>[t[0],t[1],t[2],bd("Resolved")]))}<h2 class="h3">Ticket T-1001 (demo thread)</h2><div class="pn"><div class="ms me">Hi, my order shows pending after payment.</div><div class="ms su"><b>Support (demo)</b><br>Please share the transaction reference.</div><form class="fm" data-demo="Not sent. Ticketing backend not connected."><label>Reply<textarea rows="3"></textarea></label><button class="btn">Send reply</button>${msg}</form></div>`;
+V.affiliate=()=>`<h1>Affiliate</h1><p class="note">Optional program. Demo statistics only; no earnings are guaranteed.</p>${cards([["Referral code","DEMO123"],["Referral link","apexvault.example/?ref=DEMO123"],["Clicks",0],["Registrations",0],["Qualified purchases",0],["Commission",usd(0)],["Available",usd(0)],["Paid",usd(0)]])}${DM}`;
+const NAV=[["Overview","dashboard"],["My Accounts","accounts"],["Buy Challenge","challenges"],["Orders","orders"],["Transactions","transactions"],["Payouts","user-payouts"],["Certificates","certificates"],["Notifications","notifications"],["Verification","verification"],["Support","support"],["Affiliate","affiliate"],["Profile","profile"],["Security","security"],["Logout","logout"]];
+function renderApp(h){if(!READY){$("#ap").innerHTML='<p class="note" role="status">Loading…</p>';return}
+ $("#dsb").innerHTML=NAV.map(([l,r])=>`<a class="${r===h||(h==="account-detail"&&r==="accounts")||(h==="order-detail"&&r==="orders")?"on":""}" href="#${r}">${l}</a>`).join("");
+ $("#ap").innerHTML=V[h]();$("#bc").textContent=""}
+const fld=(l,n,t="text",ac="")=>`<label>${l}<input name="${n}" type="${t}" autocomplete="${ac}" required></label>`;
+const pwf=(l,n,ac)=>`<label>${l}<span class="pwr"><input name="${n}" type="password" autocomplete="${ac}" required><button type="button" class="btn" data-act="pw">Show</button></span></label>`;
+const NB=supabaseClient?"":`<p class="note" role="alert">Supabase initialization error: ${esc(SUPABASE_INIT_ERROR||"unknown")}</p>`;
+const AU={
+login:()=>`<h1>Sign in</h1>${NB}<form id="lgf" class="fm pn" data-demo="">${fld("Email","e","email","email")}${pwf("Password","p","current-password")}<label class="cb"><input type="checkbox"> Remember me</label><button class="btn p">Sign in</button><a href="#forgot-password" style="color:var(--ac)">Forgot password?</a>${msg}</form><p><a class="btn" href="#signup">Create account</a></p>`,
+signup:()=>`<h1>Create account</h1>${NB}<form id="sgf" class="fm pn" data-demo="">${fld("First name","f","text","given-name")}${fld("Last name","l","text","family-name")}${fld("Email","e","email","email")}${pwf("Password","pw","new-password")}<div class="bar">Strength: <span id="st">none</span><div><i id="si" style="animation:none;width:0"></i></div></div>${pwf("Confirm password","p2","new-password")}<label class="cb"><input type="checkbox" required> I agree to the <a href="#terms">Terms &amp; Conditions</a></label><label class="cb"><input type="checkbox" required> I acknowledge the <a href="#risk">Risk Disclosure</a></label><button class="btn p">Create account</button>${msg}</form><p>Have an account? <a href="#login" style="color:var(--ac)">Sign in</a></p>`,
+"forgot-password":()=>`<h1>Forgot password</h1>${NB}<form id="fpf" class="fm pn" data-demo="">${fld("Email","e","email","email")}<button class="btn p">Send reset link</button>${msg}</form>`,
+"reset-password":()=>`<h1>Reset password</h1>${NB}<form id="rpf" class="fm pn" data-demo="">${pwf("New password","p","new-password")}${pwf("Confirm password","p2","new-password")}<button class="btn p">Reset password</button>${msg}</form>`,
+"verify-email":()=>`<h1>Verify your email</h1><div class="pn"><p>We've sent a verification link to your email address.</p><p class="note">In this prototype no email provider is connected, so no email was actually sent.</p><button class="btn" data-act="msg" data-t="No email provider connected. Nothing was sent.">Resend email</button> <a class="btn" href="#signup">Change email</a>${msg}</div>`,
+"two-factor":()=>`<h1>Two-factor authentication</h1>${NB}<form class="fm pn" data-demo="Not verified. 2FA codes must be checked on the server.">${fld("6-digit code","c","text","one-time-code")}<button class="btn p">Verify</button>${msg}</form>`,
+checkout:()=>{const fee=feeOf(S.size);return `<h1>Checkout</h1><div class="co"><form id="ckf" class="fm pn" novalidate><h2 class="h3" style="margin-top:0">Customer information</h2>${fld("First name","f","text","given-name")}${fld("Last name","l","text","family-name")}${fld("Email","e","email","email")}${fld("Country","c","text","country-name")}<label class="cb"><input type="checkbox" name="a"> I agree to the <a href="#terms">Terms &amp; Conditions</a></label><label class="cb"><input type="checkbox" name="b"> I agree to the <a href="#refund">Refund Policy</a></label><label class="cb"><input type="checkbox" name="c"> I have read the <a href="#rules">Trading Rules</a></label><button class="btn p">Proceed to secure payment</button>${msg}</form><aside class="pn"><h2 class="h3" style="margin-top:0">Order summary</h2><dl class="spec" style="grid-template-columns:1fr">${[["Challenge","ApexVault Challenge"],["Type",S.type],["Account size",fmt(S.size,S.cur)],["Platform",S.plat],["Currency",S.cur],["Challenge fee (demo)",fmt(fee,S.cur)],["Discount",fmt(0,S.cur)],["Total",fmt(fee,S.cur)]].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl><label class="fm" style="margin-top:12px">Promo code<input id="pc" autocomplete="off"></label><button type="button" class="btn" data-act="toast" data-t="Promo codes are validated on the server, which is not connected.">Apply</button> <a class="btn" href="#challenges">Change selection</a></aside></div>`}
+};
+function renderAuth(h){$("#au").innerHTML=AU[h]()}
+const DL={payout:()=>`<h2>Request payout</h2><form class="fm" data-demo="Not submitted. Payout requests need backend authorization, KYC and risk review."><label>Trading account<select>${ACCTS.map(a=>`<option>${esc(a.id)}</option>`).join("")}</select></label><label>Amount<input type="number" min="1" required></label><label>Payment method<select><option>Bank transfer</option><option>Approved crypto provider</option></select></label><button class="btn p">Submit request</button>${msg}</form>`,
+ticket:()=>`<h2>New support ticket</h2><form class="fm" data-demo="Not sent. Ticketing backend not connected."><label>Category<select>${["Account","Payment","Challenge","Trading Rules","Payout","Verification","Technical","Other"].map(x=>`<option>${x}</option>`).join("")}</select></label><label>Subject<input required></label><label>Message<textarea rows="4" required></textarea></label><button class="btn p">Submit ticket</button>${msg}</form>`};
+["Challenge Passed","Funded Trader","Performance Milestone"].forEach((t,i)=>DL["c"+i]=()=>`<div style="border:1px solid var(--ac);padding:24px;text-align:center"><span class="pill">DEMO CERTIFICATE</span><h2>${t}</h2><p>Demo Trader · ${esc((ACCTS[i]||{}).id)}</p><p class="demo">ID DEMO-CERT-000${i+1}. Not a real certificate.</p></div>`);
+const TT={login:"Sign in",signup:"Create account","forgot-password":"Forgot password","reset-password":"Reset password","verify-email":"Verify email","two-factor":"Two-factor",checkout:"Checkout",dashboard:"Dashboard",accounts:"My accounts","account-detail":"Account",orders:"Orders","order-detail":"Order",transactions:"Transactions","user-payouts":"Payouts",verification:"Verification",certificates:"Certificates",notifications:"Notifications",profile:"Profile",security:"Security",support:"Support",affiliate:"Affiliate",admin:"Admin"};
+function route(){const h=location.hash.slice(1),A=Object.hasOwn(V,h),U=Object.hasOwn(AU,h);let v="home";
+ if(h==="logout"){doSignOut();return}
+ if(READY&&SESSION&&(h==="login"||h==="signup")){location.hash="dashboard";return}
+ if(A&&READY&&!SESSION){location.hash="login";return}
+ if(A)v="app";else if(U)v="auth";else if(Object.hasOwn(ROUTES,h))v=LEGAL.includes(h)?"legal":h;
+ $$(".view").forEach(m=>m.hidden=m.dataset.v!==v);document.body.classList.toggle("inapp",v==="app");$("#dsb").classList.remove("o");
+ if(v==="legal")legal(h);if(v==="app")renderApp(h);if(v==="auth")renderAuth(h);
+ const nm=Object.hasOwn(ROUTES,h)?ROUTES[h]:Object.hasOwn(TT,h)?TT[h]:null;document.title=nm?nm+" | ApexVault Funding":"ApexVault Funding | Prop Trading Challenges";
+ const t=v==="home"&&h&&document.getElementById(h);t?t.scrollIntoView():window.scrollTo(0,0)}
+addEventListener("hashchange",route);
+const rr=()=>renderApp(location.hash.slice(1));
+document.addEventListener("click",e=>{const el=e.target.closest("[data-act],[data-acct],[data-order],#bell,#sbt,#dsb a");if(!el)return;
+ if(el.dataset.acct)cur=ACCTS.find(a=>a.id===el.dataset.acct);
+ if(el.dataset.order)ord=D.orders[+el.dataset.order];
+ if(el.id==="bell"){location.hash="notifications";return}
+ if(el.id==="sbt"){const o=$("#dsb").classList.toggle("o");el.setAttribute("aria-expanded",o);return}
+ if(el.matches("#dsb a")){$("#dsb").classList.remove("o");return}
+ const a=el.dataset.act;if(!a)return;const d=el.dataset;
+ if(a==="pw"){const i=el.previousElementSibling;i.type=i.type==="password"?"text":"password";el.textContent=i.type==="password"?"Show":"Hide"}
+ else if(a==="f"){F[d.s]=d.v;rr()}
+ else if(a==="toast")toast(d.t);
+ else if(a==="msg"){const m=el.parentElement.querySelector(".fmsg");m.textContent=d.t;m.hidden=false}
+ else if(a==="read"){NOTE[+d.i].r=true;rr()}
+ else if(a==="readall"){NOTE.forEach(n=>n.r=true);rr()}
+
+ else if(a==="dlg"){$("#dgc").innerHTML=DL[d.d]();$("#dg").showModal()}
+ else if(a==="close")$("#dg").close()});
+document.addEventListener("submit",e=>{const f=e.target;if(!f.matches("form"))return;
+ if(f.id==="cf")return;e.preventDefault();const m=f.querySelector(".fmsg");
+ const say=t=>{m.textContent=t;m.hidden=false};
+ if(AUTHF[f.id]){Promise.resolve(AUTHF[f.id](f,say)).catch(err=>say("Unexpected error: "+err.message));return}
+ if(f.id==="ckf"){const ok=[...f.querySelectorAll("input")].every(i=>i.type==="checkbox"?i.checked:i.value.trim());say(ok?"Secure payment provider not connected. Connect a verified server-side payment integration before accepting live payments.":"Complete all fields and accept all three agreements to continue.");return}
+ if(m)say(f.dataset.demo)});
+document.addEventListener("input",e=>{if(e.target.name!=="pw")return;const v=e.target.value,s=[v.length>=12,/[a-z]/.test(v),/[A-Z]/.test(v),/\d/.test(v),/[^\w]/.test(v)].filter(Boolean).length;$("#si").style.width=(v?s*20:0)+"%";$("#st").textContent=v?["weak","weak","fair","good","strong","strong"][s]:"none"});
+// ===== Supabase auth, loading and guards =====
+const q=(t)=>supabaseClient.from(t).select("*").then(r=>{D.err[t]=r.error?r.error.message:null;const rows=r.data||[];return rows.sort((a,b)=>String(b.created_at||"").localeCompare(String(a.created_at||"")))});
+function applyPlans(rows){const ok=rows.filter(p=>p.active!==false&&num(p.account_size)!=null&&p.challenge_type&&p.platform&&p.currency&&num(p.fee)!=null);if(!ok.length)return false;
+ PLANS=ok;CFG.types=[...new Set(ok.map(p=>p.challenge_type))];CFG.plats=[...new Set(ok.map(p=>p.platform))];CFG.curs={};
+ ok.forEach(p=>{CFG.curs[p.currency]=[SYM[p.currency]||p.currency+" ",1]});CFG.popular=null;return true}
+async function loadPlans(){const el=$("#psrc");if(!supabaseClient){el.textContent="Demo plans shown: Supabase initialization error ("+(SUPABASE_INIT_ERROR||"unknown")+").";return}
+ const rows=await q("challenge_plans");D.plans=rows;
+ if(applyPlans(rows)){render();el.textContent="Plans loaded from Supabase. Options not listed have no plan in the database."}
+ else el.textContent=D.err.challenge_plans?"Demo plans shown: could not load Supabase plans ("+D.err.challenge_plans+").":"Demo plans shown: no active plans found in Supabase."}
+async function loadAll(){if(!supabaseClient||!SESSION)return;const uid=SESSION.user.id;
+ const [p,a,o,t,pr]=await Promise.all([supabaseClient.from("profiles").select("*").eq("id",uid).maybeSingle(),q("trading_accounts"),q("orders"),q("transactions"),q("payout_requests")]);
+ D.profile=p.data;D.err.profiles=p.error?p.error.message:null;ACCTS=a.map(norm);cur=ACCTS[0]||null;
+ D.orders=o.map(x=>{const pl=D.plans.find(y=>y.id===x.challenge_plan_id);return{...x,_plan:pl?pl.challenge_type:null,_size:pl?pl.account_size:null,_plat:pl?pl.platform:null}});
+ D.tx=t;D.payouts=pr.map(x=>({...x,_account:(ACCTS.find(y=>y.uuid===x.trading_account_id)||{}).id}))}
+function clearData(){D.profile=null;D.orders=[];D.tx=[];D.payouts=[];ACCTS=[];cur=null;ord=null}
+function updateHdr(){const on=!!SESSION;$$(".si,#dr a[href='#login'],#dr a[href='#dashboard']").forEach(a=>{a.textContent=on?"Dashboard":"Sign In";a.setAttribute("href",on?"#dashboard":"#login")})}
+async function doSignOut(){if(supabaseClient)await supabaseClient.auth.signOut();SESSION=null;clearData();updateHdr();location.hash="login"}
+const need=say=>supabaseClient&&supabaseClient.auth?false:(say("Supabase initialization error: "+(SUPABASE_INIT_ERROR||"client unavailable")+". Sign-in and sign-up are disabled."),true);
+const val=(f,n)=>String(new FormData(f).get(n)||"").trim();
+const AUTHF={
+ async lgf(f,say){if(need(say))return;say("Signing in…");const{error}=await supabaseClient.auth.signInWithPassword({email:val(f,"e"),password:new FormData(f).get("p")});
+  if(error){say("Sign in failed: "+error.message);return}
+  const{data}=await supabaseClient.auth.getSession();SESSION=data.session;await loadAll();updateHdr();if(location.hash==="#dashboard")route();else location.hash="dashboard"},
+ async sgf(f,say){if(need(say))return;const pw=new FormData(f).get("pw"),p2=new FormData(f).get("p2");
+  if(pw.length<8)return say("Use at least 8 characters.");if(pw!==p2)return say("Passwords do not match.");
+  const{data,error}=await supabaseClient.auth.signUp({email:val(f,"e"),password:pw,options:{data:{first_name:val(f,"f"),last_name:val(f,"l")},emailRedirectTo:location.origin+location.pathname}});
+  if(error)return say(error.message);
+  if(data.session){SESSION=data.session;await loadAll();updateHdr();location.hash="dashboard"}else say("Account created. If email confirmation is enabled, open the link we emailed you, then sign in.")},
+ async fpf(f,say){if(need(say))return;await supabaseClient.auth.resetPasswordForEmail(val(f,"e"),{redirectTo:location.origin+location.pathname});say("If an account exists for that address, a reset link will arrive shortly.")},
+ async rpf(f,say){if(need(say))return;const pw=new FormData(f).get("p");if(!SESSION)return say("Open the reset link from your email first.");if(pw.length<8)return say("Use at least 8 characters.");if(pw!==new FormData(f).get("p2"))return say("Passwords do not match.");
+  const{error}=await supabaseClient.auth.updateUser({password:pw});if(error)return say(error.message);say("Password updated.");setTimeout(()=>{location.hash="dashboard"},800)}
+};
+route();
+(async()=>{
+ if(supabaseClient){supabaseClient.auth.onAuthStateChange((ev,s)=>{SESSION=s;updateHdr();if(ev==="PASSWORD_RECOVERY")location.hash="reset-password";if(ev==="SIGNED_OUT")clearData()});
+  const{data}=await supabaseClient.auth.getSession();SESSION=data.session;await loadPlans();await loadAll()}
+ else{loadPlans();toast("Supabase initialization error: "+(SUPABASE_INIT_ERROR||"unknown"))}
+ READY=true;updateHdr();route()})();
+</script>
+</body>
+</html>
